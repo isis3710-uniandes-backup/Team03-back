@@ -1,0 +1,9 @@
+sequelize model:create --name User --attributes user_names:string,user_lastnames:string,user_email:string,user_login:string,user_password:string,user_birthdate:date
+sequelize model:create --name Portfolio --attributes portfolio_name:string,portfolio_type:string,portfolio_description:string,portfolio_url:string,portfolio_banner:string
+sequelize model:create --name Entry --attributes entry_name:string,entry_description:string,entry_url:string,entry_hashtags:string
+sequelize model:create --name Service --attributes service_name:string,service_description:string,service_exampleurl:string,service_price:double
+sequelize model:create --name Contract --attributes contract_terms:string,contract_comments:string,contract_begindate:date,contract_enddate:date
+sequelize model:create --name Offer --attributes offer_name_string,offer_terms:string,offer_banner:string,offer_begindate:date,offer_enddate:date
+sequelize model:create --name Contractor --attributes contractor_name:string,contractor_email:string,contractor_login:string,contractor_password:string
+sequelize model:create --name Application --attributes application_comments:string,application_price:double
+sequelize model:create --name CreditCard --attributes creditcard_name:string,creditcard_number:string,creditcard_expirationdate:string

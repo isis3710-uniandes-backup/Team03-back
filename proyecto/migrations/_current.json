@@ -1,0 +1,524 @@
+{
+    "tables": {
+        "Applications": {
+            "tableName": "Applications",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "application_comments": {
+                    "field": "application_comments",
+                    "seqType": "Sequelize.STRING"
+                },
+                "application_price": {
+                    "field": "application_price",
+                    "seqType": "Sequelize.DOUBLE PRECISION"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "OfferId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Offers",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "OfferId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "UserId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Contracts": {
+            "tableName": "Contracts",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "contract_terms": {
+                    "field": "contract_terms",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contract_comments": {
+                    "field": "contract_comments",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contract_begindate": {
+                    "field": "contract_begindate",
+                    "seqType": "Sequelize.DATE"
+                },
+                "contract_enddate": {
+                    "field": "contract_enddate",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "ContractorId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Contractors",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "ContractorId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Contractors": {
+            "tableName": "Contractors",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "contractor_name": {
+                    "field": "contractor_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contractor_email": {
+                    "field": "contractor_email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contractor_login": {
+                    "field": "contractor_login",
+                    "seqType": "Sequelize.STRING"
+                },
+                "contractor_password": {
+                    "field": "contractor_password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "CreditCards": {
+            "tableName": "CreditCards",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "creditcard_name": {
+                    "field": "creditcard_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "creditcard_number": {
+                    "field": "creditcard_number",
+                    "seqType": "Sequelize.STRING"
+                },
+                "creditcard_expirationdate": {
+                    "field": "creditcard_expirationdate",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "ContractorId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Contractors",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "ContractorId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Entries": {
+            "tableName": "Entries",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "entry_name": {
+                    "field": "entry_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "entry_description": {
+                    "field": "entry_description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "entry_url": {
+                    "field": "entry_url",
+                    "seqType": "Sequelize.STRING"
+                },
+                "entry_hashtags": {
+                    "field": "entry_hashtags",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "PortfolioId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Portfolios",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "PortfolioId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Offers": {
+            "tableName": "Offers",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "offer_name": {
+                    "field": "offer_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "offer_terms": {
+                    "field": "offer_terms",
+                    "seqType": "Sequelize.STRING"
+                },
+                "offer_banner": {
+                    "field": "offer_banner",
+                    "seqType": "Sequelize.STRING"
+                },
+                "offer_begindate": {
+                    "field": "offer_begindate",
+                    "seqType": "Sequelize.DATE"
+                },
+                "offer_enddate": {
+                    "field": "offer_enddate",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "ContractorId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Contractors",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "ContractorId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Portfolios": {
+            "tableName": "Portfolios",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "portfolio_name": {
+                    "field": "portfolio_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "portfolio_type": {
+                    "field": "portfolio_type",
+                    "seqType": "Sequelize.STRING"
+                },
+                "portfolio_description": {
+                    "field": "portfolio_description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "portfolio_url": {
+                    "field": "portfolio_url",
+                    "seqType": "Sequelize.STRING"
+                },
+                "portfolio_banner": {
+                    "field": "portfolio_banner",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "UserId": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Services": {
+            "tableName": "Services",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "service_name": {
+                    "field": "service_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "service_description": {
+                    "field": "service_description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "service_exampleurl": {
+                    "field": "service_exampleurl",
+                    "seqType": "Sequelize.STRING"
+                },
+                "service_price": {
+                    "field": "service_price",
+                    "seqType": "Sequelize.DOUBLE PRECISION"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "UserId": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "UserId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_names": {
+                    "field": "user_names",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_lastnames": {
+                    "field": "user_lastnames",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_email": {
+                    "field": "user_email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_login": {
+                    "field": "user_login",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_password": {
+                    "field": "user_password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "user_birthdate": {
+                    "field": "user_birthdate",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "ApplicationEntry": {
+            "tableName": "ApplicationEntry",
+            "schema": {
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "EntryId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Entries",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "EntryId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "ApplicationId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Applications",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "ApplicationId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "OfferService": {
+            "tableName": "OfferService",
+            "schema": {
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "ServiceId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Services",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "ServiceId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "OfferId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Offers",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "field": "OfferId",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}
