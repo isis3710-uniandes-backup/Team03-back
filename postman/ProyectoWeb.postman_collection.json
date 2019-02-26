@@ -168,6 +168,334 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Portfolio",
+			"item": [
+				{
+					"name": "POST Portfolio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://previews.123rf.com/images/dmitrynesterov/dmitrynesterov1701/dmitrynesterov170100056/71727572-bosquejo-del-le%C3%B3n-en-las-acuarelas-del-estilo-en-el-fondo-blanco-.jpg\",\n    \"UserId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/portfolio",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"portfolio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Portfolio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/portfolio",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"portfolio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Portfolio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"portfolio",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Portfolio",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://mott.pe/noticias/wp-content/uploads/2018/01/Portada.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"portfolio",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Portfolio",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"portfolio",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entry",
+			"item": [
+				{
+					"name": "POST Entry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\",\n    \"PortfolioId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/entry",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"entry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Entries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/entry",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"entry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Entry",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"entry",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Entry",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\"\n}"
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"entry",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Entry",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"protocol": "http",
+							"host": [
+								"172",
+								"24",
+								"41",
+								"64"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"entry",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
