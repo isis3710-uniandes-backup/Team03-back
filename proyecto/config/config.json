@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin_db",
+    "password": "webgrupo3",
+    "database": "web_db",
+    "host": "172.24.41.64",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "admin_db",
+    "password": "webgrupo3",
+    "database": "web_db",
+    "host": "172.24.41.64",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin_db",
+    "password": "webgrupo3",
+    "database": "web_db",
+    "host": "172.24.41.64",
+    "dialect": "postgres"
+  }
+}
