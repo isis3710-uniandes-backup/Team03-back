@@ -34,6 +34,7 @@ module.exports ={
             entry_description: req.body.entry_description,
             entry_url: req.body.entry_url,
             entry_hashtags: req.body.entry_hashtags,
+            PortfolioId: req.body.PortfolioId,
           })
           .then((entry) => res.status(201).send(entry))
           .catch((error) => res.status(400).send(error));
