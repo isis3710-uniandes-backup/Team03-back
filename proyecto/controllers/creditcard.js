@@ -29,10 +29,11 @@ module.exports ={
 
       add(req, res) {
         return CreditCard
-        .create({
+          .create({
             creditcard_name: req.body.creditcard_name,
             creditcard_number: req.body.creditcard_number,
             creditcard_expirationdate: req.body.creditcard_expirationdate,
+            ContractorId: req.body.ContractorId
           })
           .then((creditcard) => res.status(201).send(creditcard))
           .catch((error) => res.status(400).send(error));
@@ -51,7 +52,7 @@ module.exports ={
             return creditcard
               .update({
                 creditcard_name: req.body.creditcard_name || creditcard.creditcard_name,
-                creditcard_number: req.body.creditcard_name || creditcard.creditcard_number,
+                creditcard_number: req.body.creditcard_number || creditcard.creditcard_number,
                 creditcard_expirationdate: req.body.creditcard_expirationdate || creditcard.creditcard_expirationdate,
               })
               .then(() => res.status(200).send(creditcard))

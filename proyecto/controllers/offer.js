@@ -1,4 +1,5 @@
 const Offer = require("../models").Offer;
+const Application = require("../models").Application;
 
 module.exports ={
     list(req, res) {
@@ -14,8 +15,7 @@ module.exports ={
     
       getById(req, res) {
         return Offer
-          .findById(req.params.id, {
-          })
+          .findById(req.params.id,{include: [Application]})
           .then((offer) => {
             if (!offer) {
               return res.status(404).send({
@@ -29,12 +29,13 @@ module.exports ={
 
       add(req, res) {
         return Offer
-        .create({
+          .create({
             offer_name: req.body.offer_name,
             offer_terms: req.body.offer_terms,
             offer_banner: req.body.offer_banner,
             offer_begindate: req.body.offer_begindate,
             offer_enddate: req.body.offer_enddate,
+            ContractorId: req.body.ContractorId
           })
           .then((offer) => res.status(201).send(offer))
           .catch((error) => res.status(400).send(error));

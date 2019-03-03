@@ -1,7 +1,10 @@
-const Contractor = require("../models").Contractor;
+const Contractor = require('../models').Contractor;
+const CreditCard = require('../models').CreditCard;
+const Offer =require('../models').Offer;
+const Contract = require('../models').Contract;
 
 module.exports ={
-    list(req, res) {
+   list(req, res) {
         return Contractor
           .findAll({
             order: [
@@ -15,6 +18,7 @@ module.exports ={
       getById(req, res) {
         return Contractor
           .findById(req.params.id, {
+            include: [CreditCard,Offer,Contract],
           })
           .then((contractor) => {
             if (!contractor) {
@@ -29,11 +33,11 @@ module.exports ={
 
       add(req, res) {
         return Contractor
-        .create({
+          .create({
             contractor_name: req.body.contractor_name,
             contractor_email: req.body.contractor_email,
             contractor_login: req.body.contractor_login,
-            contractor_password: req.body.contractor_password,
+            contractor_password: req.body.contractor_password
           })
           .then((contractor) => res.status(201).send(contractor))
           .catch((error) => res.status(400).send(error));
@@ -51,10 +55,10 @@ module.exports ={
             }
             return contractor
               .update({
-                contractor_name: req.body.contractor_name || contractor.contractor_name,
+                contractor_name: req.body.contractor_name ||contractor.contractor_name ,
                 contractor_email: req.body.contractor_email || contractor.contractor_email,
-                contractor_login: req.body.contractor_login || contractor.contractor_login,
-                contractor_password: req.body.contractor_password || contractor.contractor_password,
+                contractor_login: req.body.contractor_login||contractor.contractor_login,
+                contractor_password: req.body.contractor_password||contractor.contractor_password
               })
               .then(() => res.status(200).send(contractor))
               .catch((error) => res.status(400).send(error));
@@ -77,5 +81,5 @@ module.exports ={
               .catch((error) => res.status(400).send(error));
           })
           .catch((error) => res.status(400).send(error));
-      },
+      }
 }
