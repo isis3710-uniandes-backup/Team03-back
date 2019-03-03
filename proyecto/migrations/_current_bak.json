@@ -28,17 +28,6 @@
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 },
-                "UserId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "field": "UserId",
-                    "seqType": "Sequelize.INTEGER"
-                },
                 "OfferId": {
                     "allowNull": true,
                     "references": {
@@ -48,6 +37,17 @@
                     "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
                     "field": "OfferId",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "UserId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "UserId",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
@@ -90,12 +90,12 @@
                     "seqType": "Sequelize.DATE"
                 },
                 "ContractorId": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "references": {
                         "model": "Contractors",
                         "key": "id"
                     },
-                    "onDelete": "CASCADE",
+                    "onDelete": "SET NULL",
                     "onUpdate": "CASCADE",
                     "field": "ContractorId",
                     "seqType": "Sequelize.INTEGER"
@@ -382,17 +382,6 @@
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 },
-                "ContractId": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "Contracts",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "ContractId",
-                    "seqType": "Sequelize.INTEGER"
-                },
                 "UserId": {
                     "allowNull": false,
                     "references": {
@@ -492,8 +481,8 @@
             },
             "indexes": []
         },
-        "ContractService": {
-            "tableName": "ContractService",
+        "OfferService": {
+            "tableName": "OfferService",
             "schema": {
                 "createdAt": {
                     "allowNull": false,
@@ -516,20 +505,20 @@
                     "field": "ServiceId",
                     "seqType": "Sequelize.INTEGER"
                 },
-                "ContractId": {
+                "OfferId": {
                     "primaryKey": true,
                     "references": {
-                        "model": "Contracts",
+                        "model": "Offers",
                         "key": "id"
                     },
                     "onDelete": "CASCADE",
                     "onUpdate": "CASCADE",
-                    "field": "ContractId",
+                    "field": "OfferId",
                     "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }
