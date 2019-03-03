@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d1433899-489d-43a5-a174-25ba0262a4e1",
+		"_postman_id": "be47d185-a3d4-48e8-a9d8-4dc61b7a7949",
 		"name": "ProyectoWeb",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,13 +25,10 @@
 							"raw": "{\n    \"user_names\": \"Cristian Mateo\",\n    \"user_lastnames\": \"Amaya Porras\",\n    \"user_email\": \"mateoap95@gmail.com\",\n    \"user_login\": \"wukong\",\n    \"user_password\": \"password\",\n    \"user_birthdate\": \"1995-12-06\"\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/user",
+							"raw": "http://localhost:8082/api/user",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -52,13 +49,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/user",
+							"raw": "http://localhost:8082/api/user",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -79,13 +73,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/user/1",
+							"raw": "http://localhost:8082/api/user/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -114,13 +105,10 @@
 							"raw": "{\n    \"user_names\": \"Cristian Mateo\",\n    \"user_lastnames\": \"Amaya Porras\",\n    \"user_email\": \"mateoap95@gmail.com\",\n    \"user_login\": \"wukong\",\n    \"user_password\": \"password2\",\n    \"user_birthdate\": \"1995-12-06\"\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/user/1",
+							"raw": "http://localhost:8082/api/user/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -149,13 +137,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/user/1",
+							"raw": "http://localhost:8082/api/user/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -189,13 +174,10 @@
 							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://previews.123rf.com/images/dmitrynesterov/dmitrynesterov1701/dmitrynesterov170100056/71727572-bosquejo-del-le%C3%B3n-en-las-acuarelas-del-estilo-en-el-fondo-blanco-.jpg\",\n    \"UserId\": 1\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/portfolio",
+							"raw": "http://localhost:8082/api/portfolio",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -216,13 +198,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/portfolio",
+							"raw": "http://localhost:8082/api/portfolio",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -243,13 +222,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -278,13 +254,10 @@
 							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://mott.pe/noticias/wp-content/uploads/2018/01/Portada.jpg\"\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -313,13 +286,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -353,13 +323,10 @@
 							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\",\n    \"PortfolioId\": 1\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/entry",
+							"raw": "http://localhost:8082/api/entry",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -380,13 +347,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/entry",
+							"raw": "http://localhost:8082/api/entry",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -407,13 +371,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -442,13 +403,10 @@
 							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\"\n}"
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -477,13 +435,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://172.24.41.64:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/1",
 							"protocol": "http",
 							"host": [
-								"172",
-								"24",
-								"41",
-								"64"
+								"localhost"
 							],
 							"port": "8082",
 							"path": [
@@ -494,6 +449,968 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Application",
+			"item": [
+				{
+					"name": "POST Application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"application_comments\": \"cosas\",\n    \"application_price\": \"1000\",\n    \"UserId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/application/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"application",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/application/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"application",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Application",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/application/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"application",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Application",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"application_comments\": \"wat\",\n    \"application_price\": \"1000\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/application/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"application",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Application",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/application/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"application",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contract",
+			"item": [
+				{
+					"name": "POST Contract",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contract_terms\": \"cosas\",\n    \"contract_comments\": \"situaciones\",\n    \"contract_begindate\": \"2019-03-03T17:30:50.565Z\", \n    \"contract_enddate\": \"2019-03-03T17:30:50.565Z\",\n    \"ContractorId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contract/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contract",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Contracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contract/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contract",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Contract",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contract/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contract",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Contract",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contract_terms\": \"wat\",\n    \"contract_comments\": \"cosas\",\n    \"contract_begindate\": \"2019-03-03T17:30:50.565Z\", \n    \"contract_enddate\": \"2019-03-03T17:30:50.565Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contract/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contract",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Contract",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contract/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contract",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75b809ae-f831-4229-b5bb-479000e5c5d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1656da8c-0e34-4768-bee5-2b6b8a4efa75",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Contractor",
+			"item": [
+				{
+					"name": "POST Contractor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contractor_name\": \"Enrique Manrique\",\n    \"contractor_email\": \"e.manrique@someplace.com\",\n    \"contractor_login\": \"MEnrique\", \n    \"contractor_password\": \"cosas\",\n    \"contractor_contracts\": [],\n    \"contractor_offers\": [],\n    \"contractor_credicards\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Contractors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Contractor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Contractor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"contractor_name\": \"Enrique Manrique\",\n    \"contractor_email\": \"e.manrique@someotherplace.com\",\n    \"contractor_login\": \"MEnrique\", \n    \"contractor_password\": \"cosas\",\n    \"contractor_contracts\": [],\n    \"contractor_offers\": [],\n    \"contractor_credicards\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Contractor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75b809ae-f831-4229-b5bb-479000e5c5d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1656da8c-0e34-4768-bee5-2b6b8a4efa75",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "CreditCard",
+			"item": [
+				{
+					"name": "POST CreditCard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditcard_name\": \"Enrique Manrique\",\n    \"creditcard_number\": \"1234567891234567\",\n    \"creditcard_expirationdate\": \"2019-03-03T17:30:50.565Z\", \n    \"ContractorId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/creditcard/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"creditcard",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CreditCard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/creditcard/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"creditcard",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET CreditCard",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/creditcard/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"creditcard",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE CreditCard",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditcard_name\": \"Enrique Manrique\",\n    \"creditcard_number\": \"1234567898765432\",\n    \"creditcard_expirationdate\": \"2019-03-03T17:30:50.565Z\", \n    \"ContractorId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/creditcard/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"creditcard",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE CreditCard",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/creditcard/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"creditcard",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75b809ae-f831-4229-b5bb-479000e5c5d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1656da8c-0e34-4768-bee5-2b6b8a4efa75",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Offer",
+			"item": [
+				{
+					"name": "POST Offer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"offer_name\": \"offer1\",\n    \"offer_terms\": \"offerterms\",\n    \"offer_banner\": \"dont eve know what a banner is\", \n    \"offer_begindate\":\"2019-03-03T17:30:50.565Z\",\n    \"offer_enddate\": \"2019-03-03T17:30:50.565Z\",\n    \"ContractorId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/offer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"offer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Offer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/offer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"offer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Offer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/offer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"offer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Offer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"offer_name\": \"offer1\",\n    \"offer_terms\": \"otherofferterms\",\n    \"offer_banner\": \"dont eve know what a banner is\", \n    \"offer_begindate\":\"2019-03-03T17:30:50.565Z\",\n    \"offer_enddate\": \"2019-03-03T17:30:50.565Z\",\n    \"ContractorId\": 3\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/offer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"offer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Offer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/offer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"offer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75b809ae-f831-4229-b5bb-479000e5c5d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1656da8c-0e34-4768-bee5-2b6b8a4efa75",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "POST Service",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service_name\": \"service1\",\n    \"service_description\": \"it does stuff\",\n    \"service_exampleurl\": \"service.com\", \n    \"service_price\":\"1000\",\n    \"UserId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/service/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/service/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"service",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/service/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"service",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Service",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"service_name\": \"service1\",\n    \"service_description\": \"it does other stuff\",\n    \"service_exampleurl\": \"service.com\", \n    \"service_price\":\"1000\",\n    \"UserId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/service/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Service",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/service/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75b809ae-f831-4229-b5bb-479000e5c5d7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1656da8c-0e34-4768-bee5-2b6b8a4efa75",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
