@@ -8,6 +8,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Contract.associate = function(models) {
     // associations can be defined here
+    models.Portfolio.belongsTo(models.User,{
+      onDelete: "CASCADE",
+      foreignKey:{
+        allowNull: false
+      }
+    });
+    models.Contract.hasMany(models.Service);
   };
   return Contract;
 };

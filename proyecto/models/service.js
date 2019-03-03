@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       }
     });
-    models.Service.belongsToMany(models.Offer, {through: 'OfferService'});
+    models.Service.belongsToMany(models.Contract, {through: 'ContractService'});
   };
   return Service;
 };

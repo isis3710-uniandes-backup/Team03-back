@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Application.associate = function(models) {
     // associations can be defined here
+    models.Application.belongsTo(models.User);
   };
   return Application;
 };
