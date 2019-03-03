@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "be47d185-a3d4-48e8-a9d8-4dc61b7a7949",
+		"_postman_id": "a356b71f-9b6a-41a8-bde8-d51b19207079",
 		"name": "ProyectoWeb",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,6 +10,20 @@
 			"item": [
 				{
 					"name": "POST User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "13b0f3e6-54bc-4f17-b19d-ae5c2033b49e",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -41,6 +55,20 @@
 				},
 				{
 					"name": "GET ALL Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e83082a-293d-4fc4-a4f6-b0de20039595",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -65,6 +93,20 @@
 				},
 				{
 					"name": "GET User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28e4c128-2d1d-40b3-b44a-449241211e4c",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -90,6 +132,20 @@
 				},
 				{
 					"name": "UPDATE User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5251c88-7a2e-4e37-ab01-f2f2988127c7",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -122,6 +178,20 @@
 				},
 				{
 					"name": "DELETE User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a5a3129-825c-4ced-8097-3fddc949bccd",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -137,7 +207,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/user/1",
+							"raw": "http://localhost:8082/api/user/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -146,7 +216,7 @@
 							"path": [
 								"api",
 								"user",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -159,6 +229,20 @@
 			"item": [
 				{
 					"name": "POST Portfolio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62d017b6-f2ad-40e1-8bb1-25af7b7c7b1a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -171,7 +255,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://previews.123rf.com/images/dmitrynesterov/dmitrynesterov1701/dmitrynesterov170100056/71727572-bosquejo-del-le%C3%B3n-en-las-acuarelas-del-estilo-en-el-fondo-blanco-.jpg\",\n    \"UserId\": 1\n}"
+							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://previews.123rf.com/images/dmitrynesterov/dmitrynesterov1701/dmitrynesterov170100056/71727572-bosquejo-del-le%C3%B3n-en-las-acuarelas-del-estilo-en-el-fondo-blanco-.jpg\",\n    \"UserId\": 2\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8082/api/portfolio",
@@ -190,6 +274,20 @@
 				},
 				{
 					"name": "GET ALL Portfolio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "50a02d00-5115-4e45-962b-2112bc1407d6",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -214,6 +312,20 @@
 				},
 				{
 					"name": "GET Portfolio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9586da45-2e5f-483e-8210-aa48c09df50d",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -222,7 +334,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -231,7 +343,7 @@
 							"path": [
 								"api",
 								"portfolio",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -239,6 +351,20 @@
 				},
 				{
 					"name": "UPDATE Portfolio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a5c1319c-3bd4-4bd4-be2e-a0391eca030b",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -254,7 +380,7 @@
 							"raw": "{\n    \"portfolio_name\": \"Pinturas acuarela\",\n    \"portfolio_type\": \"Arte\",\n    \"portfolio_description\": \"\",\n    \"portfolio_url\": \"wukong/pinturas\",\n    \"portfolio_banner\": \"https://mott.pe/noticias/wp-content/uploads/2018/01/Portada.jpg\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -263,7 +389,7 @@
 							"path": [
 								"api",
 								"portfolio",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -271,6 +397,20 @@
 				},
 				{
 					"name": "DELETE Portfolio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8a368da-b0ae-4baa-ba4c-4b289f2c1c9d",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -286,7 +426,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/portfolio/1",
+							"raw": "http://localhost:8082/api/portfolio/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -295,7 +435,7 @@
 							"path": [
 								"api",
 								"portfolio",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -308,6 +448,20 @@
 			"item": [
 				{
 					"name": "POST Entry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf1aca1e-0f67-46ab-84e4-ba521124b42d",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -320,7 +474,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\",\n    \"PortfolioId\": 1\n}"
+							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\",\n    \"PortfolioId\": 4\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8082/api/entry",
@@ -339,6 +493,20 @@
 				},
 				{
 					"name": "GET ALL Entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b02bfa9-a6e1-4573-975a-767d8b199ae9",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -363,6 +531,20 @@
 				},
 				{
 					"name": "GET Entry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "91f4a463-1e1d-462c-8808-66edeeb11e0c",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -371,7 +553,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -380,7 +562,7 @@
 							"path": [
 								"api",
 								"entry",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -388,6 +570,20 @@
 				},
 				{
 					"name": "UPDATE Entry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "918515a1-8635-45b4-9305-d72e1b0142ad",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -403,7 +599,7 @@
 							"raw": "{\n    \"entry_name\": \"Pintura Protector\",\n    \"entry_description\": \"Entrada a un concurso\",\n    \"entry_url\": \"picture.png\",\n    \"entry_hashtags\": \"#contest,#2019\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -412,7 +608,7 @@
 							"path": [
 								"api",
 								"entry",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -420,6 +616,20 @@
 				},
 				{
 					"name": "DELETE Entry",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7ec6bc69-280e-4cc7-b0eb-48f168df81df",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -435,7 +645,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/entry/1",
+							"raw": "http://localhost:8082/api/entry/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -444,7 +654,7 @@
 							"path": [
 								"api",
 								"entry",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -457,6 +667,20 @@
 			"item": [
 				{
 					"name": "POST Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6a3754ad-7d5b-45f1-8eec-31b81dda566b",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -488,6 +712,20 @@
 				},
 				{
 					"name": "GET ALL Applications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c776311-c93b-43cc-a2c7-e970578f432c",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -513,6 +751,20 @@
 				},
 				{
 					"name": "GET Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2190025-2ce1-4eba-8719-37a8b095b510",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -521,7 +773,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/application/2",
+							"raw": "http://localhost:8082/api/application/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -530,7 +782,7 @@
 							"path": [
 								"api",
 								"application",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -538,6 +790,20 @@
 				},
 				{
 					"name": "UPDATE Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0771e9b8-81fd-46b5-9f30-06083ba82752",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -552,7 +818,7 @@
 							"raw": "{\n    \"application_comments\": \"wat\",\n    \"application_price\": \"1000\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/application/2",
+							"raw": "http://localhost:8082/api/application/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -561,7 +827,7 @@
 							"path": [
 								"api",
 								"application",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -569,6 +835,20 @@
 				},
 				{
 					"name": "DELETE Application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f39c076a-23ea-4b09-8d09-93e13d0164bc",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -577,7 +857,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/application/2",
+							"raw": "http://localhost:8082/api/application/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -586,7 +866,7 @@
 							"path": [
 								"api",
 								"application",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -599,6 +879,20 @@
 			"item": [
 				{
 					"name": "POST Contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2be0733c-698b-4c61-9cd6-b48c377f1a91",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -630,6 +924,20 @@
 				},
 				{
 					"name": "GET ALL Contracts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "76d8959c-ab15-44a8-be9f-af72fadf67e1",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -655,6 +963,20 @@
 				},
 				{
 					"name": "GET Contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ff2e200c-9398-4def-821b-f2dc7718e6e3",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -663,7 +985,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contract/1",
+							"raw": "http://localhost:8082/api/contract/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -672,7 +994,7 @@
 							"path": [
 								"api",
 								"contract",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -680,6 +1002,20 @@
 				},
 				{
 					"name": "UPDATE Contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a317154-e5f2-45be-a462-f4cc624304c9",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -694,7 +1030,7 @@
 							"raw": "{\n    \"contract_terms\": \"wat\",\n    \"contract_comments\": \"cosas\",\n    \"contract_begindate\": \"2019-03-03T17:30:50.565Z\", \n    \"contract_enddate\": \"2019-03-03T17:30:50.565Z\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contract/1",
+							"raw": "http://localhost:8082/api/contract/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -703,7 +1039,7 @@
 							"path": [
 								"api",
 								"contract",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -711,6 +1047,20 @@
 				},
 				{
 					"name": "DELETE Contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "954fe2de-eec4-4f5c-872f-9a909558169e",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -719,7 +1069,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contract/1",
+							"raw": "http://localhost:8082/api/contract/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -728,7 +1078,7 @@
 							"path": [
 								"api",
 								"contract",
-								"1"
+								"5"
 							]
 						}
 					},
@@ -763,6 +1113,20 @@
 			"item": [
 				{
 					"name": "POST Contractor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a28c908-6547-4e34-bdd3-b4bb0f83952d",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -794,6 +1158,20 @@
 				},
 				{
 					"name": "GET ALL Contractors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6e16aac4-f140-4a3f-8497-ed1eb8e3d49f",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -819,6 +1197,20 @@
 				},
 				{
 					"name": "GET Contractor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b43f559-df8c-49e9-80f0-46b665172c3a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -827,7 +1219,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contractor/2",
+							"raw": "http://localhost:8082/api/contractor/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -836,7 +1228,7 @@
 							"path": [
 								"api",
 								"contractor",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -844,6 +1236,20 @@
 				},
 				{
 					"name": "UPDATE Contractor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a5693512-ba8f-4713-8340-79a452f25f8a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -858,7 +1264,7 @@
 							"raw": "{\n    \"contractor_name\": \"Enrique Manrique\",\n    \"contractor_email\": \"e.manrique@someotherplace.com\",\n    \"contractor_login\": \"MEnrique\", \n    \"contractor_password\": \"cosas\",\n    \"contractor_contracts\": [],\n    \"contractor_offers\": [],\n    \"contractor_credicards\": []\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contractor/2",
+							"raw": "http://localhost:8082/api/contractor/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -867,7 +1273,7 @@
 							"path": [
 								"api",
 								"contractor",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -875,6 +1281,20 @@
 				},
 				{
 					"name": "DELETE Contractor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "460a03e7-e97b-40a6-bf91-c474747ad6d2",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -883,7 +1303,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contractor/2",
+							"raw": "http://localhost:8082/api/contractor/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -892,7 +1312,7 @@
 							"path": [
 								"api",
 								"contractor",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -927,6 +1347,20 @@
 			"item": [
 				{
 					"name": "POST CreditCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d1508d8-332e-4c1f-becd-236e3c22b6db",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -958,6 +1392,20 @@
 				},
 				{
 					"name": "GET ALL CreditCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11fee0d5-f368-4c67-b0d3-d36ee7f1b157",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -983,6 +1431,20 @@
 				},
 				{
 					"name": "GET CreditCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3a5fd5e-c8e8-41d8-a8e8-169e6a84377b",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -991,7 +1453,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/creditcard/1",
+							"raw": "http://localhost:8082/api/creditcard/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1000,7 +1462,7 @@
 							"path": [
 								"api",
 								"creditcard",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1008,6 +1470,20 @@
 				},
 				{
 					"name": "UPDATE CreditCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "91d9d16b-322a-4d76-8055-baed5f9211b6",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1022,7 +1498,7 @@
 							"raw": "{\n    \"creditcard_name\": \"Enrique Manrique\",\n    \"creditcard_number\": \"1234567898765432\",\n    \"creditcard_expirationdate\": \"2019-03-03T17:30:50.565Z\", \n    \"ContractorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/creditcard/1",
+							"raw": "http://localhost:8082/api/creditcard/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1031,7 +1507,7 @@
 							"path": [
 								"api",
 								"creditcard",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1039,6 +1515,20 @@
 				},
 				{
 					"name": "DELETE CreditCard",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5e39d68c-b172-4f20-a9a4-9084e682ab6a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1047,7 +1537,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/creditcard/1",
+							"raw": "http://localhost:8082/api/creditcard/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1056,7 +1546,7 @@
 							"path": [
 								"api",
 								"creditcard",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1091,6 +1581,20 @@
 			"item": [
 				{
 					"name": "POST Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "67c82021-a119-4c3e-b208-5f4be99b936a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1122,6 +1626,20 @@
 				},
 				{
 					"name": "GET ALL Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5093f6c5-705e-483e-8afa-2c93b7e5e64a",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1147,6 +1665,20 @@
 				},
 				{
 					"name": "GET Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa4d8252-29ad-4bec-b5a6-919df3cee677",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1155,7 +1687,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/offer/1",
+							"raw": "http://localhost:8082/api/offer/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1164,7 +1696,7 @@
 							"path": [
 								"api",
 								"offer",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1172,6 +1704,20 @@
 				},
 				{
 					"name": "UPDATE Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "521b922b-1ee1-493f-bad1-bf994ffea70c",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1186,7 +1732,7 @@
 							"raw": "{\n    \"offer_name\": \"offer1\",\n    \"offer_terms\": \"otherofferterms\",\n    \"offer_banner\": \"dont eve know what a banner is\", \n    \"offer_begindate\":\"2019-03-03T17:30:50.565Z\",\n    \"offer_enddate\": \"2019-03-03T17:30:50.565Z\",\n    \"ContractorId\": 3\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/offer/1",
+							"raw": "http://localhost:8082/api/offer/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1195,7 +1741,7 @@
 							"path": [
 								"api",
 								"offer",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1203,6 +1749,20 @@
 				},
 				{
 					"name": "DELETE Offer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea3494dc-2872-4056-846d-5b3a68a9e31f",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1211,7 +1771,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/offer/1",
+							"raw": "http://localhost:8082/api/offer/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1220,7 +1780,7 @@
 							"path": [
 								"api",
 								"offer",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -1255,6 +1815,20 @@
 			"item": [
 				{
 					"name": "POST Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2a340c9-1bc6-46f5-9b80-e3631bbc8dbd",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1286,6 +1860,20 @@
 				},
 				{
 					"name": "GET ALL Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4038ad83-6d3f-42bd-9377-0c6ce222d2a3",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1311,6 +1899,20 @@
 				},
 				{
 					"name": "GET Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7742a85-7b84-4139-97bc-1746c2ea65f1",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1319,7 +1921,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/service/2",
+							"raw": "http://localhost:8082/api/service/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1328,7 +1930,7 @@
 							"path": [
 								"api",
 								"service",
-								"2"
+								"7"
 							]
 						}
 					},
@@ -1336,6 +1938,20 @@
 				},
 				{
 					"name": "UPDATE Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9cb288bd-54e5-4797-98a1-2e9c0dd71140",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -1350,7 +1966,7 @@
 							"raw": "{\n    \"service_name\": \"service1\",\n    \"service_description\": \"it does other stuff\",\n    \"service_exampleurl\": \"service.com\", \n    \"service_price\":\"1000\",\n    \"UserId\": 2\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/service/1",
+							"raw": "http://localhost:8082/api/service/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1359,7 +1975,7 @@
 							"path": [
 								"api",
 								"service",
-								"1"
+								"7"
 							]
 						}
 					},
@@ -1367,6 +1983,20 @@
 				},
 				{
 					"name": "DELETE Service",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3413d64f-75dd-4ef9-8cda-36cd928f6336",
+								"exec": [
+									"pm.test(\"response is ok\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1375,7 +2005,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/service/1",
+							"raw": "http://localhost:8082/api/service/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1384,7 +2014,7 @@
 							"path": [
 								"api",
 								"service",
-								"1"
+								"7"
 							]
 						}
 					},
