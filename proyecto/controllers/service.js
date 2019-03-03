@@ -34,6 +34,7 @@ module.exports ={
             service_description: req.body.service_description,
             service_exampleurl: req.body.service_exampleurl,
             service_price: req.body.service_price,
+            UserId: req.body.UserId
           })
           .then((service) => res.status(201).send(service))
           .catch((error) => res.status(400).send(error));

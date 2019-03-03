@@ -37,7 +37,10 @@ module.exports ={
             contractor_name: req.body.contractor_name,
             contractor_email: req.body.contractor_email,
             contractor_login: req.body.contractor_login,
-            contractor_password: req.body.contractor_password
+            contractor_password: req.body.contractor_password,
+            contractor_contracts: req.body.contractor_contracts,
+            contractor_offers: req.body.contractor_offers,
+            contractor_creditcards: req.body.contractor_creditcards,
           })
           .then((contractor) => res.status(201).send(contractor))
           .catch((error) => res.status(400).send(error));
@@ -55,10 +58,13 @@ module.exports ={
             }
             return contractor
               .update({
-                contractor_name: req.body.contractor_name ||contractor.contractor_name ,
+                contractor_name: req.body.contractor_name || contractor.contractor_name ,
                 contractor_email: req.body.contractor_email || contractor.contractor_email,
-                contractor_login: req.body.contractor_login||contractor.contractor_login,
-                contractor_password: req.body.contractor_password||contractor.contractor_password
+                contractor_login: req.body.contractor_login || contractor.contractor_login,
+                contractor_password: req.body.contractor_password || contractor.contractor_password,
+                contractor_contracts: req.body.contractor_contracts || contractor.contractor_contracts,
+                contractor_offers: req.body.contractor_offers || contractor.contractor_offers,
+                contractor_creditcards: req.body.contractor_creditcards || contractor.contractor_creditcards,
               })
               .then(() => res.status(200).send(contractor))
               .catch((error) => res.status(400).send(error));

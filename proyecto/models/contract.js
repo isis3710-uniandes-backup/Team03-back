@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Contract.associate = function(models) {
     // associations can be defined here
-    models.Portfolio.belongsTo(models.User,{
+    models.Contract.belongsTo(models.Contractor,{
       onDelete: "CASCADE",
       foreignKey:{
         allowNull: false

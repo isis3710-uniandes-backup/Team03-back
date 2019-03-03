@@ -30,10 +30,9 @@ module.exports ={
       add(req, res) {
         return Application
         .create({
-            contract_terms: req.body.contract_terms,
-            contract_comments: req.body.contract_comments,
-            contract_begindate: req.body.contract_begindate,
-            contract_enddate: req.body.contract_enddate,
+            application_comments: req.body.application_comments,
+            application_price: req.body.application_price,
+            UserId: req.body.UserId,
           })
           .then((application) => res.status(201).send(application))
           .catch((error) => res.status(400).send(error));
@@ -51,10 +50,8 @@ module.exports ={
             }
             return application
               .update({
-                contract_terms: req.body.contract_terms || application.contract_terms,
-                contract_comments: req.body.contract_comments || application.contract_comments,
-                contract_begindate: req.body.contract_begindate || application.contract_begindate,
-                contract_enddate: req.body.contract_enddate || application.contract_enddate,
+                application_comments: req.body.application_comments || application.application_comments,
+                application_price: req.body.application_price || application.application_price,
               })
               .then(() => res.status(200).send(application))
               .catch((error) => res.status(400).send(error));

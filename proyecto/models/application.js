@@ -6,7 +6,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Application.associate = function(models) {
     // associations can be defined here
-    models.Application.belongsTo(models.User);
+    models.Application.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey:{
+        allowNull: false
+      }
+    });
   };
   return Application;
 };

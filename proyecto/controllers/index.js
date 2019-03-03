@@ -4,6 +4,9 @@ const entry = require('./entry');
 const contractor = require('./contractor');
 const creditcard = require('./creditcard');
 const offer = require('./offer');
+const application = require('./application');
+const contract = require('./contract');
+const service = require('./service');
 
 
 module.exports = {
@@ -12,5 +15,8 @@ module.exports = {
   entry,
   contractor,
   creditcard,
-  offer
+  offer,
+  application,
+  contract,
+  service
 };

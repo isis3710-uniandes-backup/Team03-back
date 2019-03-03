@@ -34,6 +34,7 @@ module.exports ={
             contract_comments: req.body.contract_comments,
             contract_begindate: req.body.contract_begindate,
             contract_enddate: req.body.contract_enddate,
+            ContractorId: req.body.ContractorId,
           })
           .then((contract) => res.status(201).send(contract))
           .catch((error) => res.status(400).send(error));
