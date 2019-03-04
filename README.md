@@ -11,4 +11,6 @@ Acceder a los commandos REST por medio de postman. <br>
     GET posibilidad/ <br>
     GET posibilidad/{id: number} <br>
     PUT posibilidad/{id: number} <br>
-    DELETE posibilidad/{id: number}
+    DELETE posibilidad/{id: number} <br><br>
+    
+Al ejecutar las pruebas que se encuentran en el paquete de Postman, es necesario asegurarse que lo id indicados en la ruta de la prueba existan ya que estos se generan automáticamente al crear registros.
