@@ -3,7 +3,9 @@ const CreditCard = require("../models").CreditCard;
 module.exports ={
     list(req, res) {
         return CreditCard
-          .findAll({
+          .findAll({where: {
+              ContractorId: req.params.id,
+              id: req.params.idCreditCard},
             order: [
               ['createdAt', 'DESC'],
             ],
@@ -14,8 +16,11 @@ module.exports ={
     
       getById(req, res) {
         return CreditCard
-          .findById(req.params.id, {
-          })
+          .findOne({
+            where: {
+              ContractorId: req.params.id,
+              id: req.params.idCreditCard
+            }})
           .then((creditcard) => {
             if (!creditcard) {
               return res.status(404).send({
@@ -41,8 +46,11 @@ module.exports ={
 
       update(req, res) {
         return CreditCard
-          .findById(req.params.id, {
-          })
+          .findOne({
+            where: {
+              ContractorId: req.params.id,
+              id: req.params.idCreditCard
+            }})
           .then(creditcard => {
             if (!creditcard) {
               return res.status(404).send({
@@ -63,7 +71,11 @@ module.exports ={
     
       delete(req, res) {
         return CreditCard
-          .findById(req.params.id)
+          .findOne({
+            where: {
+              ContractorId: req.params.id,
+              id: req.params.idCreditCard
+            }})
           .then(creditcard => {
             if (!creditcard) {
               return res.status(400).send({

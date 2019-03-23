@@ -32,23 +32,34 @@ router.post('/api/entry', entryController.add);
 router.put('/api/entry/:id', entryController.update);
 router.delete('/api/entry/:id', entryController.delete);
 
+//----------------//
+//----Nixon-------//
+//----------------//
 router.get('/api/contractor', contractorController.list);
 router.get('/api/contractor/:id', contractorController.getById);
 router.post('/api/contractor', contractorController.add);
 router.put('/api/contractor/:id', contractorController.update);
 router.delete('/api/contractor/:id', contractorController.delete);
 
-router.get('/api/creditcard', creditCardController.list);
-router.get('/api/creditcard/:id', creditCardController.getById);
-router.post('/api/creditcard', creditCardController.add);
-router.put('/api/creditcard/:id', creditCardController.update);
-router.delete('/api/creditcard/:id', creditCardController.delete);
+var routerCreditCard=express.Router({mergeParams: true});
+var routerOffer=express.Router({mergeParams: true});
+router.use('/api/contractor/:id/creditcard', routerCreditCard);
+router.use('/api/contractor/:id/offer',routerOffer );
 
-router.get('/api/offer', offerController.list);
-router.get('/api/offer/:id', offerController.getById);
-router.post('/api/offer', offerController.add);
-router.put('/api/offer/:id', offerController.update);
-router.delete('/api/offer/:id', offerController.delete);
+routerCreditCard.get('/', creditCardController.list);
+routerCreditCard.get('/:idCreditCard', creditCardController.getById);
+routerCreditCard.post('/', creditCardController.add);
+routerCreditCard.put('/:idCreditCard', creditCardController.update);
+routerCreditCard.delete('/:idCreditCard', creditCardController.delete);
+
+routerOffer.get('/', offerController.list);
+routerOffer.get('/:idOffer', offerController.getById);
+routerOffer.post('/', offerController.add);
+routerOffer.put('/:idOffer', offerController.update);
+routerOffer.delete('/:idOffer', offerController.delete);
+//----------------//
+//---End--Nixon
+//----------------//
 
 router.get('/api/application', applicationController.list);
 router.get('/api/application/:id', applicationController.getById);

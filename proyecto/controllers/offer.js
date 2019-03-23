@@ -5,6 +5,8 @@ module.exports ={
     list(req, res) {
         return Offer
           .findAll({
+            where: {
+              ContractorId:req.params.id},
             order: [
               ['createdAt', 'DESC'],
             ],
@@ -15,7 +17,10 @@ module.exports ={
     
       getById(req, res) {
         return Offer
-          .findById(req.params.id,{include: [Application]})
+          .findAll({where: {
+              ContractorId:req.params.id,
+              id: req.params.idOffer},
+              include: [Application]})
           .then((offer) => {
             if (!offer) {
               return res.status(404).send({
@@ -32,7 +37,7 @@ module.exports ={
           .create({
             offer_name: req.body.offer_name,
             offer_terms: req.body.offer_terms,
-            offer_banner: req.body.offer_banner,
+            offer_terms: req.body.offer_banner,
             offer_begindate: req.body.offer_begindate,
             offer_enddate: req.body.offer_enddate,
             ContractorId: req.body.ContractorId
@@ -43,8 +48,11 @@ module.exports ={
 
       update(req, res) {
         return Offer
-          .findById(req.params.id, {
-          })
+          .findOne({
+            where: {
+              ContractorId:req.params.id,
+              id:req.params.idOffer
+            }})
           .then(offer => {
             if (!offer) {
               return res.status(404).send({
@@ -67,7 +75,11 @@ module.exports ={
     
       delete(req, res) {
         return Offer
-          .findById(req.params.id)
+          .findOne({
+            where: {
+              ContractorId:req.params.id,
+              id:req.params.idOffer
+            }})
           .then(offer => {
             if (!offer) {
               return res.status(400).send({

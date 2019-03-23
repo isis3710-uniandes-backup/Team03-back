@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     offer_name: DataTypes.STRING,
     offer_terms: DataTypes.STRING,
     offer_banner: DataTypes.STRING,
-    offer_begindate: DataTypes.DATE,
-    offer_enddate: DataTypes.DATE
+    offer_begindate: DataTypes.STRING,
+    offer_enddate: DataTypes.STRING
   }, {});
   Offer.associate = function(models) {
     // associations can be defined here
