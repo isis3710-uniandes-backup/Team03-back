@@ -79,4 +79,24 @@ module.exports ={
           })
           .catch((error) => res.status(400).send(error));
       },
+
+      getContractorContract(req, res) {
+        return Contract
+        .findAll({
+          where: {
+            ContractorId: req.params.id,
+          }
+        })
+        .then( contracts => {
+          if (!contracts) {
+              return res.status(404).send({
+                message: 'User not found.',
+            })
+          }
+          else {
+              return res.status(200).send(contracts);
+          }
+        })
+        .catch( error => res.status(400).send(error));
+      }
 }

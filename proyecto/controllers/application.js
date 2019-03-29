@@ -75,4 +75,24 @@ module.exports ={
           })
           .catch((error) => res.status(400).send(error));
       },
+
+      getUserApplication(req, res) {
+        return Application
+        .findAll({
+          where: {
+            UserId: req.params.id,
+          }
+        })
+        .then( applications => {
+          if (!applications) {
+              return res.status(404).send({
+                message: 'Portfolios not found.',
+            })
+          }
+          else {
+              return res.status(200).send(applications);
+          }
+        })
+        .catch( error => res.status(400).send(error));
+      }
 }

@@ -86,4 +86,25 @@ module.exports ={
           })
           .catch((error) => res.status(400).send(error));
       },
+
+      authenticate(req, res) {
+        return User
+        .findAll({
+          where: {
+            user_login: req.params.log,
+            user_password: req.params.pas,
+          }
+        })
+        .then( user => {
+          if (user === []) {
+              return res.status(404).send({
+                message: 'User not found.',
+            })
+          }
+          else {
+              return res.status(200).send(user);
+          }
+        })
+        .catch( error => res.status(400).send(error));
+      }
 }

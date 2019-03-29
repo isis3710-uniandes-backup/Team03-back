@@ -87,5 +87,26 @@ module.exports ={
               .catch((error) => res.status(400).send(error));
           })
           .catch((error) => res.status(400).send(error));
+      },
+
+      authenticate(req, res) {
+        return Contractor
+        .findAll({
+          where: {
+            contractor_login: req.params.log,
+            contractor_password: req.params.pas,
+          }
+        })
+        .then( contractor => {
+          if (!contractor) {
+              return res.status(404).send({
+                message: 'Contractor not found.',
+            })
+          }
+          else {
+              return res.status(200).send(contractor);
+          }
+        })
+        .catch( error => res.status(400).send(error));
       }
 }

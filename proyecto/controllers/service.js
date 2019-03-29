@@ -79,4 +79,24 @@ module.exports ={
           })
           .catch((error) => res.status(400).send(error));
       },
+
+      getUserService(req, res) {
+        return Service
+        .findAll({
+          where: {
+            UserId: req.params.id,
+          }
+        })
+        .then( services => {
+          if (!services) {
+              return res.status(404).send({
+                message: 'User not found.',
+            })
+          }
+          else {
+              return res.status(200).send(services);
+          }
+        })
+        .catch( error => res.status(400).send(error));
+      }
 }
