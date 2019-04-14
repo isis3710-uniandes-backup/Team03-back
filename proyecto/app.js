@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
-
+const Busboy = require('busboy');
 var indexRouter = require('./routes/index');
+const fs = require('fs');
+const imagesDir = path.join(__dirname,'public/files/images');
 
 var app = express();
 app.use(cors());
@@ -20,13 +22,45 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 
-app.listen(8082, '0.0.0.0');
+app.set('port', process.env.PORT || 8082);
+app.set('host', process.env.HOST || '0.0.0.0');
+
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+
+app.post('/upload', function(req, res) {
+  var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+      var saveTo = path.join(imagesDir, filename);
+      console.log('Uploading: ' + saveTo);
+      file.pipe(fs.createWriteStream(saveTo));
+    });
+    busboy.on('finish', function() {
+      console.log('Upload complete');
+      res.writeHead(200, { 'Connection': 'close' });
+      res.end("That's all folks!");
+    });
+    return req.pipe(busboy);
+});
+
+app.post('/banner', function(req, res) {
+  var busboy = new Busboy({ headers: req.headers });
+  busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+    var saveTo = path.join(__dirname+'/public/files/images/banner/', filename);
+    console.log('Uploading: ' + saveTo);
+    file.pipe(fs.createWriteStream(saveTo));
+  });
+  busboy.on('finish', function() {
+    console.log('Upload complete');
+    res.writeHead(200, { 'Connection': 'close' });
+    res.end("That's all folks!");
+  });
+  return req.pipe(busboy);
 });
 
 // error handler
