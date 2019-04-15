@@ -9,13 +9,16 @@ import M from "materialize-css";
 import { FormattedMessage } from 'react-intl';
 import PortfolioList from './components/portfolioComponents/PortfoliosList';
 import logo from './logo.png';
+import './style.css';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(this.props.messages);
     this.state = {
-      iniciado: false,
+      iniciadoUser: false,
+      iniciadoContractor: false,
       login: false,
       signup: false,
       idIniciado: 0,
@@ -38,7 +41,8 @@ class App extends Component {
     this.setState({
       login: true,
       signup: false,
-      iniciado: false
+      iniciadoUser: false,
+      iniciadoContractor: false
     });
   }
 
@@ -46,23 +50,29 @@ class App extends Component {
     this.setState({
       login: false,
       signup: true,
-      iniciado: false
+      iniciadoUser: false,
+      iniciadoContractor: false
     });
   }
 
   logIn(conectado) {
+    console.log(conectado);
     const idLogeado = conectado.idIdentified;
     var nombreLogeado = '';
-    fetch('/api/user/' + idLogeado).then(res => res.json()).then(data => {
-      nombreLogeado = data.user_login;
-      this.setState({
-        login: false,
-        signup: false,
-        iniciado: true,
-        idIniciado: idLogeado,
-        nombreIniciado: nombreLogeado
+    const user = conectado.user;
+    if (user) {
+      fetch('/api/user/' + idLogeado).then(res => res.json()).then(data => {
+        nombreLogeado = data.user_login;
+        this.setState({
+          login: false,
+          signup: false,
+          iniciadoUser: true,
+          iniciadoContractor: false,
+          idIniciado: idLogeado,
+          nombreIniciado: nombreLogeado
+        });
       });
-    });
+    }
   }
 
   toProfile() {
@@ -76,7 +86,8 @@ class App extends Component {
     this.setState({
       login: false,
       signup: false,
-      iniciado: false,
+      iniciadoUser: false,
+      iniciadoContractor: false,
       idIniciado: 0,
       nombreIniciado: 0,
       viendoConcursos: false,
@@ -94,13 +105,15 @@ class App extends Component {
 
   toAllPortfolios() {
     this.setState({
+      login: false,
+      signup: false,
       viendoPortafolios: false,
       viendoTodosPortafolios: true
     });
   }
 
   toHome() {
-    if (this.state.iniciado === false) {
+    if (this.state.iniciadoUser === false && this.state.iniciadoContractor === false) {
       this.setState({
         login: false,
         signup: false,
@@ -113,216 +126,217 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="navbar-fixed">
-          <nav>
-            <div className="nav-wrapper grey darken-4">
-              <div className="row">
-                <div className="col s12">
-                  <a href="#" onClick={this.toHome} className="brand-logo"><img class="responsive-img" src={logo} alt="Logo" width="40px" height="40px" /> Minerva's Gallery</a>
-                  <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-                  <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    {
-                      this.state.iniciado ?
-                        <div>
-                          <li>
-                            <a onClick={this.toProfile}>
-                              <FormattedMessage
-                                id="App.Profile"
-                                defaultMessage="Profile"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a onClick={this.toPortfolios}>
-                              <FormattedMessage
-                                id="App.Portfolios"
-                                defaultMessage="Portfolios"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a className="modal-trigger" href="#confirmModal">
-                              <FormattedMessage
-                                id="App.SignOut"
-                                defaultMessage="Sign Out"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                        :
-                        <div>
-                          <li>
-                            <a onClick={this.toSignUp}>
-                              <FormattedMessage
-                                id="App.SignUp"
-                                defaultMessage="Sign Up"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a onClick={this.toLogin}>
-                              <FormattedMessage
-                                id="App.Login"
-                                defaultMessage="Sign In"
-                              />
-                            </a>
-                          </li>
-                          <li>
-                            <a onClick={this.toAllPortfolios}>
-                              <FormattedMessage
-                                id="App.Portfolios"
-                                defaultMessage="Portfolios"
-                              />
-                            </a>
-                          </li>
-                        </div>
-                    }
-                  </ul>
+      <body>
+        <header>
+          <div className="navbar-fixed">
+            <nav>
+              <div className="nav-wrapper grey darken-4">
+                <div className="row">
+                  <div className="col s12">
+                    <a href="#" onClick={this.toHome} className="brand-logo"><img className="responsive-img" src={logo} alt="Logo" width="40px" height="40px" /> Minerva's Gallery</a>
+                    <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                    <ul id="nav-mobile" className="right hide-on-med-and-down">
+                      {
+                        this.state.iniciadoUser ?
+                          <div>
+                            <li>
+                              <a onClick={this.toProfile}>
+                                <FormattedMessage
+                                  id="App.Profile"
+                                  defaultMessage="Profile"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a onClick={this.toPortfolios}>
+                                <FormattedMessage
+                                  id="App.Portfolios"
+                                  defaultMessage="Portfolios"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a className="modal-trigger" href="#confirmModal">
+                                <FormattedMessage
+                                  id="App.SignOut"
+                                  defaultMessage="Sign Out"
+                                />
+                              </a>
+                            </li>
+                          </div>
+                          :
+                          <div>
+                            <li>
+                              <a onClick={this.toSignUp}>
+                                <FormattedMessage
+                                  id="App.SignUp"
+                                  defaultMessage="Sign Up"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a onClick={this.toLogin}>
+                                <FormattedMessage
+                                  id="App.Login"
+                                  defaultMessage="Sign In"
+                                />
+                              </a>
+                            </li>
+                            <li>
+                              <a onClick={this.toAllPortfolios}>
+                                <FormattedMessage
+                                  id="App.Portfolios"
+                                  defaultMessage="Portfolios"
+                                />
+                              </a>
+                            </li>
+                          </div>
+                      }
+                    </ul>
+                  </div>
                 </div>
               </div>
+            </nav>
+          </div>
+
+          <br></br>
+
+          {/* Modals */}
+
+          <div id="confirmModal" className="modal">
+            <div className="modal-content">
+              <h4>Cerrar sesión</h4>
+              <p>¿Estás seguro que deseas cerrar sesión?</p>
             </div>
-          </nav>
-        </div>
-
-        <br></br>
-
-        {/* Modals */}
-
-        <div id="confirmModal" className="modal">
-          <div className="modal-content">
-            <h4>Cerrar sesión</h4>
-            <p>¿Estás seguro que deseas cerrar sesión?</p>
+            <div className="modal-footer">
+              <a href="#" className="modal-close waves-effect waves-green btn-flat">No</a>
+              <a onClick={this.logOut} className="modal-close waves-effect waves-green btn-flat">Sí</a>
+            </div>
           </div>
-          <div className="modal-footer">
-            <a href="#" className="modal-close waves-effect waves-green btn-flat">No</a>
-            <a onClick={this.logOut} className="modal-close waves-effect waves-green btn-flat">Sí</a>
-          </div>
-        </div>
 
-        {/* Barra lateral para dispositivos móviles */}
+          {/* Barra lateral para dispositivos móviles */}
 
-        {
-          this.state.iniciado ?
-            <ul className="sidenav" id="mobile-demo">
-              <li>
-                <a onClick={this.toProfile}>
-                  <FormattedMessage
-                    id="App.Profile"
-                    defaultMessage="Profile"
-                  />
-                </a>
-              </li>
-              <li>
-                <a onClick={this.toPortfolios}>
-                  <FormattedMessage
-                    id="App.Portfolios"
-                    defaultMessage="Portfolios"
-                  />
-                </a>
-              </li>
-              <li>
-                <a className="modal-trigger" href="#confirmModal">
-                  <FormattedMessage
-                    id="App.SignOut"
-                    defaultMessage="Sign Out"
-                  />
-                </a>
-              </li>
-            </ul>
-            :
-            <ul className="sidenav" id="mobile-demo">
-              <li>
-                <a onClick={this.toSignUp}>
-                  <FormattedMessage
-                    id="App.SignUp"
-                    defaultMessage="Sign Up"
-                  />
-                </a>
-              </li>
-              <li>
-                <a onClick={this.toLogin}>
-                  <FormattedMessage
-                    id="App.Login"
-                    defaultMessage="Sign In"
-                  />
-                </a>
-              </li>
-              <li>
-                <a onClick={this.toAllPortfolios}>
-                  <FormattedMessage
-                    id="App.Portfolios"
-                    defaultMessage="Portfolios"
-                  />
-                </a>
-              </li>
-            </ul>
-        }
-
+          {
+            this.state.iniciadoUser ?
+              <ul className="sidenav" id="mobile-demo">
+                <li>
+                  <a onClick={this.toProfile}>
+                    <FormattedMessage
+                      id="App.Profile"
+                      defaultMessage="Profile"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a onClick={this.toPortfolios}>
+                    <FormattedMessage
+                      id="App.Portfolios"
+                      defaultMessage="Portfolios"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a className="modal-trigger" href="#confirmModal">
+                    <FormattedMessage
+                      id="App.SignOut"
+                      defaultMessage="Sign Out"
+                    />
+                  </a>
+                </li>
+              </ul>
+              :
+              <ul className="sidenav" id="mobile-demo">
+                <li>
+                  <a onClick={this.toSignUp}>
+                    <FormattedMessage
+                      id="App.SignUp"
+                      defaultMessage="Sign Up"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a onClick={this.toLogin}>
+                    <FormattedMessage
+                      id="App.Login"
+                      defaultMessage="Sign In"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a onClick={this.toAllPortfolios}>
+                    <FormattedMessage
+                      id="App.Portfolios"
+                      defaultMessage="Portfolios"
+                    />
+                  </a>
+                </li>
+              </ul>
+          }
+        </header>
         {/* Componentes principales */}
-
-        {
-          this.state.login ?
-            <div>
-              <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} />
-            </div>
-            : this.state.signup ?
+        < main >
+          {
+            this.state.login ?
               <div>
-                <SignUp enableSignUp={this.logIn} />
+                <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} />
               </div>
-              : this.state.iniciado ?
-                this.state.viendoConcursos ?
-                  <div>
-                    <UserPortfolios idLogged={this.state.idIniciado} />
-                  </div>
-                  :
-                  <div>
-                    <UserProfile idLogged={this.state.idIniciado} />
-                  </div>
-                : this.state.viendoTodosPortafolios ?
-                  <div>
-                    <PortfolioList />
-                  </div>
-                  :
-                  <div>
-                    <Home />
-                  </div>
-        }
-
-        <footer class="page-footer grey darken-4">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">
+              : this.state.signup ?
+                <div>
+                  <SignUp enableSignUp={this.logIn} />
+                </div>
+                : this.state.iniciadoUser ?
+                  this.state.viendoConcursos ?
+                    <div>
+                      <UserPortfolios idLogged={this.state.idIniciado} />
+                    </div>
+                    :
+                    <div>
+                      <UserProfile idLogged={this.state.idIniciado} />
+                    </div>
+                  : this.state.viendoTodosPortafolios ?
+                    <div>
+                      <PortfolioList />
+                    </div>
+                    :
+                    <div>
+                      <Home />
+                    </div>
+          }
+        </main >
+        <footer className="page-footer grey darken-4">
+          <div className="container">
+            <div className="row">
+              <div className="col l6 s12">
+                <h5 className="white-text">
                   <FormattedMessage
                     id="Home.greetings"
                     defaultMessage="Thank you for your visit!"
                   />
                 </h5>
-                <p class="grey-text text-lighten-4">
+                <p className="grey-text text-lighten-4">
                   <FormattedMessage
                     id="Home.safety"
                     defaultMessage="This page ensures the security of your shared media files. Keep calm."
                   />
                 </p>
               </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">
+              <div className="col l4 offset-l2 s12">
+                <h5 className="white-text">
                   <FormattedMessage
                     id="Home.creators"
                     defaultMessage="Creators"
                   />
                 </h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="mailto:cm.amaya10@uniandes.edu.co">Cristian Amaya</a></li>
+                  <li><a className="grey-text text-lighten-3" href="mailto:cm.amaya10@uniandes.edu.co">Cristian Amaya</a></li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
+          <div className="footer-copyright">
+            <div className="container">
               © 2019 Copyright Text
-        <a class="grey-text text-lighten-4 right" href="#app">
+        <a className="grey-text text-lighten-4 right" href="#app">
                 <FormattedMessage
                   id="Home"
                   defaultMessage="Home"
@@ -331,8 +345,7 @@ class App extends Component {
             </div>
           </div>
         </footer>
-
-      </div>
+      </body>
     )
   }
 }

@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 });
 router.get('/api/user', userController.list);
 router.get('/api/user/:id', userController.getById);
-router.get('/api/user/:log/:pas', userController.authenticate)  
+router.get('/api/user/:log/:pas', userController.authenticate);
 router.post('/api/user', userController.add);
 router.put('/api/user/:id', userController.update);
 router.delete('/api/user/:id', userController.delete);

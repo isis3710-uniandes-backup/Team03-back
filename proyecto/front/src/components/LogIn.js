@@ -23,48 +23,44 @@ class LogIn extends Component {
 
     handleSubmit() {
         var identified = false;
+        var user = false;
         var idIdentified = 0;
         fetch('/api/user').then(res => res.json()).then(data => {
             data.forEach((dat) => {
                 if ((dat.user_email === this.state.user_login || dat.user_login === this.state.user_login) && dat.user_password === this.state.user_password) {
                     idIdentified = dat.id;
                     identified = true;
+                    user = true;
                 }
             });
 
             if (identified == true) {
                 M.toast({ html: 'Sesión iniciada', classes: 'rounded' });
-                this.props.enableLogIn({ idIdentified });
-            }
-            else if (this.state.user_password == '' || this.state.user_login == '') {
-                M.toast({ html: 'Ingresa valores válidos para iniciar sesión', classes: 'rounded' });
+                this.props.enableLogIn({ idIdentified, user });
             }
             else {
-                M.toast({ html: 'Correo electrónico/Login sin registrar o contraseña incorrecta', classes: 'rounded' });
-            }
-        });
-        if (!identified) {
-            fetch('/api/contractor').then(res => res.json()).then(data => {
-                data.forEach((dat) => {
-                    if ((dat.contractor_email == this.state.user_login || dat.contractor_login == this.state.user_login) && dat.contractor_password == this.state.user_password) {
-                        idIdentified = dat.id;
-                        identified = true;
+                fetch('/api/contractor').then(res => res.json()).then(data => {
+                    data.forEach((dat) => {
+                        if ((dat.contractor_email == this.state.user_login || dat.contractor_login == this.state.user_login) && dat.contractor_password == this.state.user_password) {
+                            idIdentified = dat.id;
+                            identified = true;
+                        }
+                    });
+
+                    if (identified == true) {
+                        M.toast({ html: 'Sesión iniciada', classes: 'rounded' });
+                        this.props.enableLogIn({ idIdentified, user });
+                    } else if (this.state.user_password == '' || this.state.user_login == '') {
+                        M.toast({ html: 'Ingresa valores válidos para iniciar sesión', classes: 'rounded' });
+                    }
+                    else {
+                        M.toast({ html: 'Correo electrónico/Login sin registrar o contraseña incorrecta', classes: 'rounded' });
                     }
                 });
-
-                if (identified == true) {
-                    M.toast({ html: 'Sesión iniciada', classes: 'rounded' });
-                    this.props.enableLogIn({ idIdentified });
-                }
-                else if (this.state.user_password == '' || this.state.user_login == '') {
-                    M.toast({ html: 'Ingresa valores válidos para iniciar sesión', classes: 'rounded' });
-                }
-                else {
-                    M.toast({ html: 'Correo electrónico/Login sin registrar o contraseña incorrecta', classes: 'rounded' });
-                }
-            });
-        }
+            }
+        });
     }
+
 
     componentDidMount() {
         document.dispatchEvent(new Event('component'));
@@ -140,7 +136,7 @@ class LogIn extends Component {
                                     defaultMessage="here."
                                 />
                             </a>
-                            </h6>
+                        </h6>
                     </center>
                 </div>
             </div>

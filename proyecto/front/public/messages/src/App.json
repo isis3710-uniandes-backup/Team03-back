@@ -1,0 +1,38 @@
+[
+  {
+    "id": "App.Profile",
+    "defaultMessage": "Profile"
+  },
+  {
+    "id": "App.Portfolios",
+    "defaultMessage": "Portfolios"
+  },
+  {
+    "id": "App.SignOut",
+    "defaultMessage": "Sign Out"
+  },
+  {
+    "id": "App.SignUp",
+    "defaultMessage": "Sign Up"
+  },
+  {
+    "id": "App.Login",
+    "defaultMessage": "Sign In"
+  },
+  {
+    "id": "Home.greetings",
+    "defaultMessage": "Thank you for your visit!"
+  },
+  {
+    "id": "Home.safety",
+    "defaultMessage": "This page ensures the security of your shared media files. Keep calm."
+  },
+  {
+    "id": "Home.creators",
+    "defaultMessage": "Creators"
+  },
+  {
+    "id": "Home",
+    "defaultMessage": "Home"
+  }
+]

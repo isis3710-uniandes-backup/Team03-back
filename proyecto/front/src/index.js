@@ -5,7 +5,6 @@ import App from './App'
 import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
-
 import localeData from './locales/data.json';
 
 addLocaleData([...en, ...es]);
@@ -23,7 +22,7 @@ const messages = localeData[languageWithoutRegionCode] || localeData[language] |
 
 render(
     <IntlProvider locale={language} messages={messages}>
-    <App/>
+    <App messages={messages}/>
     </IntlProvider>,
      document.getElementById("app")
 );
