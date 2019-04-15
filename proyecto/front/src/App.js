@@ -7,6 +7,8 @@ import ContractorProfile from './components/contractorComponents/contractorProfi
 import UserPortfolios from './components/userComponents/UserPortfolios'
 import M from "materialize-css";
 import { FormattedMessage } from 'react-intl';
+import PortfolioList from './components/portfolioComponents/PortfoliosList';
+import logo from './logo.png';
 
 class App extends Component {
 
@@ -65,7 +67,8 @@ class App extends Component {
 
   toProfile() {
     this.setState({
-      viendoConcursos: false
+      viendoConcursos: false,
+      viendoTodosPortafolios: false
     });
   }
 
@@ -76,7 +79,8 @@ class App extends Component {
       iniciado: false,
       idIniciado: 0,
       nombreIniciado: 0,
-      viendoConcursos: false
+      viendoConcursos: false,
+      viendoTodosPortafolios: false
     });
     M.toast({ html: 'Sesión cerrada', classes: 'rounded' });
   }
@@ -99,7 +103,9 @@ class App extends Component {
     if (this.state.iniciado === false) {
       this.setState({
         login: false,
-        signup: false
+        signup: false,
+        viendoPortafolios: false,
+        viendoTodosPortafolios: false
       });
     }
   }
@@ -113,7 +119,7 @@ class App extends Component {
             <div className="nav-wrapper grey darken-4">
               <div className="row">
                 <div className="col s12">
-                  <a href="#" onClick={this.toHome} className="brand-logo">Minerva's Gallery</a>
+                  <a href="#" onClick={this.toHome} className="brand-logo"><img class="responsive-img" src={logo} alt="Logo" width="40px" height="40px" /> Minerva's Gallery</a>
                   <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                   <ul id="nav-mobile" className="right hide-on-med-and-down">
                     {
@@ -273,10 +279,14 @@ class App extends Component {
                   <div>
                     <UserProfile idLogged={this.state.idIniciado} />
                   </div>
-                :
-                <div>
-                  <Home />
-                </div>
+                : this.state.viendoTodosPortafolios ?
+                  <div>
+                    <PortfolioList />
+                  </div>
+                  :
+                  <div>
+                    <Home />
+                  </div>
         }
 
         <footer class="page-footer grey darken-4">
