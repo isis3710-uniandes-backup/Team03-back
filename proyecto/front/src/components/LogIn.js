@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import M from "materialize-css";
+import { FormattedMessage } from 'react-intl';
+
 class LogIn extends Component{
 
   constructor(props){
