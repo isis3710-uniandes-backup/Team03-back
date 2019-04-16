@@ -11,9 +11,6 @@ const contractController = require('../controllers').contract;
 const serviceController = require('../controllers').service;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 router.get('/api/user', userController.list);
 router.get('/api/user/:id', userController.getById);
 router.get('/api/user/:log/:pas', userController.authenticate);
@@ -23,7 +20,7 @@ router.delete('/api/user/:id', userController.delete);
 
 router.get('/api/portfolio', portfolioController.list);
 router.get('/api/portfolio/:id', portfolioController.getById);
-router.get('/api/portfolio/:portfolio_url', portfolioController.getByUrl);
+router.get('/portfolio/:portfolio_url', portfolioController.getByUrl);
 router.get('/api/portfolio/:id/user', portfolioController.getUserPortfolio);
 router.post('/api/portfolio', portfolioController.add);
 router.put('/api/portfolio/:id', portfolioController.update);

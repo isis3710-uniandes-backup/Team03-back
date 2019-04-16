@@ -38,7 +38,7 @@ class OfferProfile extends Component {
         <table>
           <tbody>
             <tr>
-              <td><b>Tipo</b></td>
+              <td><b>Terminos</b></td>
               <td>{this.state.offer_terms}</td>
             </tr>
             <tr>

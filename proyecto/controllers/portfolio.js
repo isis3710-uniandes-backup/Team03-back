@@ -15,7 +15,7 @@ module.exports ={
     
       getById(req, res) {
         return Portfolio
-          .findById(req.params.id, {
+          .findByPk(req.params.id, {
             include: [Entry],
           })
           .then((portfolio) => {

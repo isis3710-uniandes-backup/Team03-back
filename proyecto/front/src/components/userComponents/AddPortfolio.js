@@ -7,6 +7,7 @@ class AddPortfolio extends Component {
         super(props);
         if (this.props.portafolio != null) {
             this.state = {
+                UserId: this.props.idLogged,
                 portfolio_name: this.props.portafolio.portfolio_name,
                 portfolio_banner: this.props.portafolio.portfolio_banner,
                 portfolio_url: this.props.portafolio.portfolio_url,
@@ -18,6 +19,7 @@ class AddPortfolio extends Component {
         }
         else {
             this.state = {
+                UserId: this.props.idLogged,
                 portfolio_name: '',
                 portfolio_banner: '',
                 portfolio_url: '',
@@ -58,6 +60,7 @@ class AddPortfolio extends Component {
                     else {
                         nuevoConcurso = { portfolio_name: this.state.portfolio_name, portfolio_banner: this.state.portfolio_banner, portfolio_url: this.state.portfolio_url.replace(/ /g, ""), portfolio_type: this.state.portfolio_type, portfolio_description: this.state.portfolio_description };
                     }
+                    console.log(nuevoConcurso);
 
                     fetch('/api/portfolio/' + this.props.portafolio.id, {
                         method: 'PUT',
@@ -74,9 +77,10 @@ class AddPortfolio extends Component {
                             return res.json();
                         }
                         else {
+                            console.log(res);
                             this.setState({
                                 procesando: false
-                            }, () => { throw new Error("Ya existe un portafolio con el mismo URL"); });
+                            }, () => {console.log(this.state); });
 
                         }
                     }).then(data => {
@@ -94,9 +98,9 @@ class AddPortfolio extends Component {
                     M.toast({ html: 'Ingresa valores válidos para el portafolio y una imagen para su perfil', classes: 'rounded' });
                 }
                 else {
-                    const nuevoConcurso = { portfolio_name: this.state.portfolio_name, portfolio_banner: banner.name, portfolio_url: this.state.portfolio_url.replace(/ /g, ""), portfolio_type: this.state.portfolio_type, portfolio_description: this.state.portfolio_description };
-
-                    fetch('/api/portafolio', {
+                    const nuevoConcurso = { portfolio_name: this.state.portfolio_name, portfolio_banner: banner.name, portfolio_url: this.state.portfolio_url.replace(/ /g, ""), portfolio_type: this.state.portfolio_type, portfolio_description: this.state.portfolio_description, UserId: this.state.UserId};
+                    console.log(nuevoConcurso); 
+                    fetch('/api/portfolio', {
                         method: 'POST',
                         body: JSON.stringify(nuevoConcurso),
                         headers: {
@@ -109,9 +113,10 @@ class AddPortfolio extends Component {
                             return res.json();
                         }
                         else {
+                            console.log(res);
                             this.setState({
                                 procesando: false
-                            }, () => { throw new Error("Ya existe un portafolio con el mismo URL"); });
+                            }, () => {  console.log(this.state); });
 
                         }
                     }).then(data => {

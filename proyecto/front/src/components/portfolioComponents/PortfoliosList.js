@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PortfolioProfile from './PortfolioProfile'
-import {FormattedMessage} from 'react-intl'
+import { FormattedMessage } from 'react-intl'
+import copy from 'copy-to-clipboard';
+import M from "materialize-css";
 class PortfolioList extends Component {
     constructor(props) {
         super(props);
@@ -9,6 +11,9 @@ class PortfolioList extends Component {
             portfolioActivo: null
         }
         this.actualizar();
+        this.toPortfolioList = this.toPortfolioList.bind(this);
+        this.toPortfolioProfile = this.toPortfolioProfile.bind(this);
+        this.compartirURL = this.compartirURL.bind(this);
     }
 
     actualizar() {
@@ -21,6 +26,30 @@ class PortfolioList extends Component {
         });
     }
 
+    toPortfolioList() {
+        this.setState({
+          cambiando: null,
+          agregando: false,
+          portfolioActivo: null
+        })
+      }
+
+    toPortfolioProfile(contest) {
+        fetch('/api/portfolio/' + contest.id).then(res => res.json()).then(data => {
+            this.setState({
+                cambiando: null,
+                agregando: false,
+                portfolioActivo: data
+            });
+        });
+    }
+
+    compartirURL(url) {
+        copy('http://localhost:8082/' + url);
+        M.toast({ html: 'URL del portafolio copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
+    }
+
+
     render() {
 
         const portafolios = this.state.portafolios.map((portafolio, i) => {
@@ -28,7 +57,7 @@ class PortfolioList extends Component {
                 <div className="col s4" key={portafolio.id}>
                     <div className="card medium sticky-action">
                         <div className="card-image waves-effect waves-block waves-light">
-                            <img className="activator" src={"./supervoicesfiles/images/" + portafolio.portfolio_banner} />
+                            <img className="activator" src={"./files/images/banner/" + portafolio.portfolio_banner} />
                         </div>
                         <div className="card-content">
                             <span className="card-title activator grey-text text-darken-4">{portafolio.portfolio_name}<i className="material-icons right">more_vert</i></span>
@@ -36,14 +65,27 @@ class PortfolioList extends Component {
                         </div>
                         <div className="card-reveal">
                             <span className="card-title grey-text text-darken-4">{portafolio.portfolio_name}<i className="material-icons right">close</i></span>
-                            <p><b> Tipo:</b> {portafolio.portfolio_type}</p>
-                            <p><b>Descripción:</b> {portafolio.portfolio_description}</p>
+                            <p>
+                                <b>
+                                    <FormattedMessage
+                                        id="Portfolio.Type"
+                                        defaultMessage="Type"
+                                    />
+                                </b>
+                                {portafolio.portfolio_type}
+                            </p>
+                            <p>
+                                <b>
+                                    <FormattedMessage
+                                        id="Portfolio.Description"
+                                        defaultMessage="Description"
+                                    />
+                                </b> {portafolio.portfolio_description}
+                            </p>
                         </div>
                         <div className="card-action">
                             <a href="#" onClick={() => this.toPortfolioProfile(portafolio)} className="black-text"><b>Abrir</b></a>
                             <a href="#" onClick={() => this.compartirURL(portafolio.portfolio_url)} className="black-text"><b>Compartir</b></a>
-                            <a href="#confirmDeleteModal" onClick={() => this.toDelete(portafolio.id)} className="modal-trigger black-text"><i className="material-icons right">delete</i></a>
-                            <a href="#" onClick={() => this.toEdit(portafolio)} className="black-text"><i className="material-icons right">edit</i></a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +110,7 @@ class PortfolioList extends Component {
                             </div>
                         </div>
                         :
-                        <PortfolioProfile portfolio={this.state.portfolioActivo} salir={this.toPortfolioList} externo={false} />
+                        <PortfolioProfile portfolio={this.state.portfolioActivo} salir={this.toPortfolioList} externo={true} />
                 }
 
             </div>

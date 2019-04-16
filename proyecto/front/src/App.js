@@ -116,7 +116,6 @@ class App extends Component {
       viendoTodosPortafolios: false,
       viendoTodasOfertas: false
     });
-    console.log(this.state);
   }
 
   toAllPortfolios() {

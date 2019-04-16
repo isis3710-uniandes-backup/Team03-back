@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-
+import logo from './logo.png';
 import PortfolioProfile from './components/portfolioComponents/PortfolioProfile'
 
 class PortfolioFromURL extends Component{
@@ -12,13 +12,14 @@ class PortfolioFromURL extends Component{
       error: ''
     } 
     const urlPortfolio = this.props.match.params.portfolio;
-    fetch('/api/portfolio/'+urlPortfolio).then(res => res.json()).then(data => {   
+    console.log(urlPortfolio);
+    fetch('/portfolio/'+urlPortfolio).then(res => res.json()).then(data => {   
       if(data.length == 0){
         throw new Error("No hay ningún portfolio registrado con esta URL. Intente con otra.");
       }
       else{
         this.setState({
-          contest:data[0]
+          portfolio:data[0]
         });  
       }                  
     }).catch(err=>{
@@ -35,10 +36,10 @@ class PortfolioFromURL extends Component{
       <div>
         <div className="navbar-fixed">          
           <nav>
-            <div className="nav-wrapper red darken-4">
+            <div className="nav-wrapper grey darken-4">
               <div className = "row">
                 <div className = "col s12">                
-                  <Link to="/" className="brand-logo center">Minerva's Gallery</Link>            
+                  <Link to="/" className="brand-logo"> <img className="responsive-img" src={logo} alt="Logo" width="40px" height="40px" /> Minerva's Gallery</Link>            
                 </div>
               </div>
             </div>

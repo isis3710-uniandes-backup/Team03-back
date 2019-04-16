@@ -1,10 +1,10 @@
 [
   {
-    "id": "Portfolios.Type",
+    "id": "Portfolio.Type",
     "defaultMessage": "Type"
   },
   {
-    "id": "Portfolios.Description",
+    "id": "Portfolio.Description",
     "defaultMessage": "Description"
   },
   {
@@ -16,15 +16,7 @@
     "defaultMessage": "Share"
   },
   {
-    "id": "Portfolios.Delete",
-    "defaultMessage": "Delete"
-  },
-  {
-    "id": "Portfolios.Edit",
-    "defaultMessage": "Edit"
-  },
-  {
-    "id": "Portfolios.Title",
+    "id": "UserPortfolios.Title",
     "defaultMessage": "My Portfolios"
   },
   {

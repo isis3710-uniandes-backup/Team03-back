@@ -5,9 +5,6 @@ import AddPortfolio from './AddPortfolio'
 import PortfolioProfile from '../portfolioComponents/PortfolioProfile';
 import { FormattedMessage } from 'react-intl';
 
-const { promisify } = require('util'); //<-- Require promisify
-const getIP = promisify(require('external-ip')());
-
 class UserPortfolios extends Component {
 
   constructor(props) {
@@ -38,6 +35,7 @@ class UserPortfolios extends Component {
   }
 
   actualizar() {
+
     fetch('/api/user/' + this.state.idLogged).then(res => res.json()).then(data => {
       if (data.Portfolios == null) {
         this.setState({
@@ -92,7 +90,7 @@ class UserPortfolios extends Component {
   deletePortfolio(id) {
     fetch('/api/portfolio/' + id).then(res => res.json()).then(data => {
 
-      fetch('/api/portafolio/' + id, { method: 'DELETE' }).then(res => {
+      fetch('/api/portfolio/' + id, { method: 'DELETE' }).then(res => {
         if (res.ok) {
           M.toast({ html: 'Portafolio eliminado', classes: 'rounded' });
           this.actualizar();
@@ -108,23 +106,17 @@ class UserPortfolios extends Component {
       borrando: null
     });
   }
-
   compartirURL(url) {
-    getIP().then((ip) => {
-      copy('http://' + ip + ':8082/' + url);
-      M.toast({ html: 'URL del portafolio copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
-      console.log(ip);
-    }).catch((error) => {
-      console.error(error);
-    });
+    copy('http://localhost:8082/' + url);
+    M.toast({ html: 'URL del portafolio copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
   }
 
-  toPortfolioProfile(contest) {
-    fetch('/api/portafolio/' + contest.id).then(res => res.json()).then(data => {
+  toPortfolioProfile(portfolio) {
+    fetch('/api/portfolio/' + portfolio.id).then(res => res.json()).then(data => {
       this.setState({
         cambiando: null,
         agregando: false,
-        contestActivo: data
+        portfolioActivo: data
       });
     });
   }
@@ -133,7 +125,7 @@ class UserPortfolios extends Component {
     this.setState({
       cambiando: null,
       agregando: false,
-      contestActivo: null
+      portfolioActivo: null
     })
   }
 
@@ -142,13 +134,12 @@ class UserPortfolios extends Component {
   }
 
   render() {
-
     const portafolios = this.state.portafolios.map((portafolio, i) => {
       return (
         <div className="col s4" key={portafolio.id}>
           <div className="card medium sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
-              <img className="activator" src={"./supervoicesfiles/images/" + portafolio.portfolio_banner} />
+              <img className="activator" src={"./files/images/banner/" + portafolio.portfolio_banner} />
             </div>
             <div className="card-content">
               <span className="card-title activator grey-text text-darken-4">{portafolio.portfolio_name}<i className="material-icons right">more_vert</i></span>
@@ -159,7 +150,7 @@ class UserPortfolios extends Component {
               <p>
                 <b>
                   <FormattedMessage
-                    id="Portfolios.Type"
+                    id="Portfolio.Type"
                     defaultMessage="Type"
                   />
                 </b>
@@ -168,7 +159,7 @@ class UserPortfolios extends Component {
               <p>
                 <b>
                   <FormattedMessage
-                    id="Portfolios.Description"
+                    id="Portfolio.Description"
                     defaultMessage="Description"
                   />
                 </b>
@@ -192,21 +183,8 @@ class UserPortfolios extends Component {
                   />
                 </b>
               </a>
-              <a href="#confirmDeleteModal" onClick={() => this.toDelete(portafolio.id)} className="modal-trigger black-text">
-                <i className="material-icons right">
-                  <FormattedMessage
-                    id="Portfolios.Delete"
-                    defaultMessage="Delete"
-                  />
-                </i>
-              </a>
-              <a href="#" onClick={() => this.toEdit(portafolio)} className="black-text">
-                <i className="material-icons right"><FormattedMessage
-                  id="Portfolios.Edit"
-                  defaultMessage="Edit"
-                />
-                </i>
-              </a>
+              <a href="#confirmDeleteModal" onClick = {() => this.toDelete(portafolio.id)} className="modal-trigger black-text"><i className="material-icons right">delete</i></a>
+              <a href="#" onClick = {() => this.toEdit(portafolio)} className="black-text"><i className="material-icons right">edit </i></a>
             </div>
           </div>
 
@@ -222,7 +200,7 @@ class UserPortfolios extends Component {
           this.state.portfolioActivo == null ?
             <div className="container">
               <center><h5> <FormattedMessage
-                id="Portfolios.Title"
+                id="UserPortfolios.Title"
                 defaultMessage="My Portfolios"
               /> {!this.state.agregando ? <a onClick={this.toAdd} className="btn-floating btn-large waves-effect waves-light red darken-3"><i className="material-icons">add</i></a> : null}</h5></center>
               <br></br>
@@ -231,7 +209,7 @@ class UserPortfolios extends Component {
                 this.state.agregando ?
                   <div className="row">
                     <div className="container">
-                      <AddPortfolio post={this.postPortfolio} put={this.putPortfolio} idLogged={this.state.user.id} portafolio={this.state.cambiando} messages = {this.state.messages}/>
+                      <AddPortfolio post={this.postPortfolio} put={this.putPortfolio} idLogged={this.state.user.id} portafolio={this.state.cambiando} messages={this.state.messages} />
                     </div>
                     <br></br>
                   </div>
