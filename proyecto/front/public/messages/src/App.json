@@ -4,12 +4,16 @@
     "defaultMessage": "Profile"
   },
   {
-    "id": "App.Portfolios",
-    "defaultMessage": "Portfolios"
+    "id": "App.UserPortfolios",
+    "defaultMessage": "My Portfolios"
   },
   {
     "id": "App.SignOut",
     "defaultMessage": "Sign Out"
+  },
+  {
+    "id": "App.ContractorContracts",
+    "defaultMessage": "My Contracts"
   },
   {
     "id": "App.SignUp",
@@ -18,6 +22,30 @@
   {
     "id": "App.Login",
     "defaultMessage": "Sign In"
+  },
+  {
+    "id": "App.Portfolios",
+    "defaultMessage": "Portfolios"
+  },
+  {
+    "id": "App.Offers",
+    "defaultMessage": "Offers"
+  },
+  {
+    "id": "App.SignOutMessageTitle",
+    "defaultMessage": "Log Out?"
+  },
+  {
+    "id": "App.SignOutMessage",
+    "defaultMessage": "Are you sure you want to log out?"
+  },
+  {
+    "id": "App.No",
+    "defaultMessage": "No"
+  },
+  {
+    "id": "App.Yes",
+    "defaultMessage": "Yes"
   },
   {
     "id": "Home.greetings",

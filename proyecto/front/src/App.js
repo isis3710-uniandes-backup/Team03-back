@@ -8,6 +8,7 @@ import UserPortfolios from './components/userComponents/UserPortfolios'
 import M from "materialize-css";
 import { FormattedMessage } from 'react-intl';
 import PortfolioList from './components/portfolioComponents/PortfoliosList';
+import OfferList from './components/offerComponents/OfferList';
 import logo from './logo.png';
 import './style.css';
 
@@ -15,7 +16,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.messages);
     this.state = {
       iniciadoUser: false,
       iniciadoContractor: false,
@@ -24,7 +24,9 @@ class App extends Component {
       idIniciado: 0,
       nombreIniciado: '',
       viendoPortafolios: false,
-      viendoTodosPortafolios: false
+      viendoTodasOfertas: false,
+      viendoTodosPortafolios: false,
+      messages: this.props.messages
     }
     this.toLogin = this.toLogin.bind(this);
     this.toSignUp = this.toSignUp.bind(this);
@@ -33,6 +35,7 @@ class App extends Component {
     this.toHome = this.toHome.bind(this);
     this.toProfile = this.toProfile.bind(this);
     this.toPortfolios = this.toPortfolios.bind(this);
+    this.toAllOffers = this.toAllOffers.bind(this);
     this.toAllPortfolios = this.toAllPortfolios.bind(this);
   }
 
@@ -56,7 +59,6 @@ class App extends Component {
   }
 
   logIn(conectado) {
-    console.log(conectado);
     const idLogeado = conectado.idIdentified;
     var nombreLogeado = '';
     const user = conectado.user;
@@ -72,12 +74,24 @@ class App extends Component {
           nombreIniciado: nombreLogeado
         });
       });
+    } else {
+      fetch('/api/contractor/' + idLogeado).then(res => res.json()).then(data => {
+        nombreLogeado = data.contractor_login;
+        this.setState({
+          login: false,
+          signup: false,
+          iniciadoUser: false,
+          iniciadoContractor: true,
+          idIniciado: idLogeado,
+          nombreIniciado: nombreLogeado
+        });
+      });
     }
   }
 
   toProfile() {
     this.setState({
-      viendoConcursos: false,
+      viendoPortafolios: false,
       viendoTodosPortafolios: false
     });
   }
@@ -90,7 +104,7 @@ class App extends Component {
       iniciadoContractor: false,
       idIniciado: 0,
       nombreIniciado: 0,
-      viendoConcursos: false,
+      viendoPortafolios: false,
       viendoTodosPortafolios: false
     });
     M.toast({ html: 'Sesión cerrada', classes: 'rounded' });
@@ -99,8 +113,10 @@ class App extends Component {
   toPortfolios() {
     this.setState({
       viendoPortafolios: true,
-      viendoTodosPortafolios: false
+      viendoTodosPortafolios: false,
+      viendoTodasOfertas: false
     });
+    console.log(this.state);
   }
 
   toAllPortfolios() {
@@ -108,7 +124,18 @@ class App extends Component {
       login: false,
       signup: false,
       viendoPortafolios: false,
-      viendoTodosPortafolios: true
+      viendoTodosPortafolios: true,
+      viendoTodasOfertas: false
+    });
+  }
+
+  toAllOffers() {
+    this.setState({
+      login: false,
+      signup: false,
+      viendoPortafolios: false,
+      viendoTodosPortafolios: false,
+      viendoTodasOfertas: true
     });
   }
 
@@ -118,7 +145,8 @@ class App extends Component {
         login: false,
         signup: false,
         viendoPortafolios: false,
-        viendoTodosPortafolios: false
+        viendoTodosPortafolios: false,
+        viendoTodasOfertas: false
       });
     }
   }
@@ -150,8 +178,8 @@ class App extends Component {
                             <li>
                               <a onClick={this.toPortfolios}>
                                 <FormattedMessage
-                                  id="App.Portfolios"
-                                  defaultMessage="Portfolios"
+                                  id="App.UserPortfolios"
+                                  defaultMessage="My Portfolios"
                                 />
                               </a>
                             </li>
@@ -164,33 +192,68 @@ class App extends Component {
                               </a>
                             </li>
                           </div>
-                          :
-                          <div>
-                            <li>
-                              <a onClick={this.toSignUp}>
-                                <FormattedMessage
-                                  id="App.SignUp"
-                                  defaultMessage="Sign Up"
-                                />
-                              </a>
-                            </li>
-                            <li>
-                              <a onClick={this.toLogin}>
-                                <FormattedMessage
-                                  id="App.Login"
-                                  defaultMessage="Sign In"
-                                />
-                              </a>
-                            </li>
-                            <li>
-                              <a onClick={this.toAllPortfolios}>
-                                <FormattedMessage
-                                  id="App.Portfolios"
-                                  defaultMessage="Portfolios"
-                                />
-                              </a>
-                            </li>
-                          </div>
+                          : this.state.iniciadoContractor ?
+                            <div>
+                              <li>
+                                <a onClick={this.toProfile}>
+                                  <FormattedMessage
+                                    id="App.Profile"
+                                    defaultMessage="Profile"
+                                  />
+                                </a>
+                              </li>
+                              <li>
+                                <a onClick={this.toPortfolios}>
+                                  <FormattedMessage
+                                    id="App.ContractorContracts"
+                                    defaultMessage="My Contracts"
+                                  />
+                                </a>
+                              </li>
+                              <li>
+                                <a className="modal-trigger" href="#confirmModal">
+                                  <FormattedMessage
+                                    id="App.SignOut"
+                                    defaultMessage="Sign Out"
+                                  />
+                                </a>
+                              </li>
+                            </div>
+                            :
+                            <div>
+                              <li>
+                                <a onClick={this.toSignUp}>
+                                  <FormattedMessage
+                                    id="App.SignUp"
+                                    defaultMessage="Sign Up"
+                                  />
+                                </a>
+                              </li>
+                              <li>
+                                <a onClick={this.toLogin}>
+                                  <FormattedMessage
+                                    id="App.Login"
+                                    defaultMessage="Sign In"
+                                  />
+                                </a>
+                              </li>
+                              <li>
+                                <a onClick={this.toAllPortfolios}>
+                                  <FormattedMessage
+                                    id="App.Portfolios"
+                                    defaultMessage="Portfolios"
+                                  />
+                                </a>
+                              </li>
+                              <li>
+                                <a onClick={this.toAllOffers}>
+                                  <FormattedMessage
+                                    id="App.Offers"
+                                    defaultMessage="Offers"
+                                  />
+                                </a>
+                              </li>
+                            </div>
                       }
                     </ul>
                   </div>
@@ -205,12 +268,32 @@ class App extends Component {
 
           <div id="confirmModal" className="modal">
             <div className="modal-content">
-              <h4>Cerrar sesión</h4>
-              <p>¿Estás seguro que deseas cerrar sesión?</p>
+              <h4>
+                <FormattedMessage
+                  id="App.SignOutMessageTitle"
+                  defaultMessage="Log Out?"
+                />
+              </h4>
+              <p>
+                <FormattedMessage
+                  id="App.SignOutMessage"
+                  defaultMessage="Are you sure you want to log out?"
+                />
+              </p>
             </div>
             <div className="modal-footer">
-              <a href="#" className="modal-close waves-effect waves-green btn-flat">No</a>
-              <a onClick={this.logOut} className="modal-close waves-effect waves-green btn-flat">Sí</a>
+              <a href="#" className="modal-close waves-effect waves-green btn-flat">
+                <FormattedMessage
+                  id="App.No"
+                  defaultMessage="No"
+                />
+              </a>
+              <a onClick={this.logOut} className="modal-close waves-effect waves-green btn-flat">
+                <FormattedMessage
+                  id="App.Yes"
+                  defaultMessage="Yes"
+                />
+              </a>
             </div>
           </div>
 
@@ -230,8 +313,8 @@ class App extends Component {
                 <li>
                   <a onClick={this.toPortfolios}>
                     <FormattedMessage
-                      id="App.Portfolios"
-                      defaultMessage="Portfolios"
+                      id="App.UserPortfolios"
+                      defaultMessage="My Portfolios"
                     />
                   </a>
                 </li>
@@ -270,6 +353,14 @@ class App extends Component {
                     />
                   </a>
                 </li>
+                <li>
+                  <a onClick={this.toAllOffers}>
+                    <FormattedMessage
+                      id="App.Offers"
+                      defaultMessage="Offers"
+                    />
+                  </a>
+                </li>
               </ul>
           }
         </header>
@@ -278,29 +369,39 @@ class App extends Component {
           {
             this.state.login ?
               <div>
-                <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} />
+                <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} messages={this.state.messages}/>
               </div>
               : this.state.signup ?
                 <div>
-                  <SignUp enableSignUp={this.logIn} />
+                  <SignUp enableSignUp={this.logIn} messages={this.state.messages}/>
                 </div>
                 : this.state.iniciadoUser ?
-                  this.state.viendoConcursos ?
+                  this.state.viendoPortafolios ?
                     <div>
-                      <UserPortfolios idLogged={this.state.idIniciado} />
+                      <UserPortfolios idLogged={this.state.idIniciado} messages={this.state.messages}/>
                     </div>
                     :
                     <div>
-                      <UserProfile idLogged={this.state.idIniciado} />
+                      <UserProfile idLogged={this.state.idIniciado} messages={this.state.messages}/>
                     </div>
-                  : this.state.viendoTodosPortafolios ?
+                  : this.state.iniciadoContractor ?
                     <div>
-                      <PortfolioList />
+                      <ContractorProfile idLogged={this.state.idIniciado} messages={this.state.messages}/>
                     </div>
                     :
-                    <div>
-                      <Home />
-                    </div>
+                    this.state.viendoTodosPortafolios ?
+                      <div>
+                        <PortfolioList messages={this.state.messages}/>
+                      </div>
+                      :
+                      this.state.viendoTodasOfertas ?
+                        <div>
+                          <OfferList />
+                        </div>
+                        :
+                        <div>
+                          <Home />
+                        </div>
           }
         </main >
         <footer className="page-footer grey darken-4">

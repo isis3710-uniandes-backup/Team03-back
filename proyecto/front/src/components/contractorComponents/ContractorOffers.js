@@ -1,53 +1,50 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 import copy from 'copy-to-clipboard';
 import M from "materialize-css";
-import AddPortfolio from './AddPortfolio'
-import PortfolioProfile from '../portfolioComponents/PortfolioProfile';
+import AddOffer from './AddOffer'
+import OfferProfile from '../offerComponents/OfferProfile';
 import { FormattedMessage } from 'react-intl';
 
-const { promisify } = require('util'); //<-- Require promisify
-const getIP = promisify(require('external-ip')());
-
-class UserPortfolios extends Component {
+class ContractorOffers extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       idLogged: this.props.idLogged,
-      user: {},
+      contractor: {},
       portafolios: [],
       agregando: false,
       cambiando: null,
       borrando: null,
-      portfolioActivo: null,
-      messages: this.props.messages
+      ofertaActiva: null
     }
 
     this.actualizar = this.actualizar.bind(this);
-    this.postPortfolio = this.postPortfolio.bind(this);
-    this.putPortfolio = this.putPortfolio.bind(this);
-    this.deletePortfolio = this.deletePortfolio.bind(this);
+    this.postOffer = this.postOffer.bind(this);
+    this.putOffer = this.putOffer.bind(this);
+    this.deleteOffer = this.deleteOffer.bind(this);
     this.toAdd = this.toAdd.bind(this)
     this.toEdit = this.toEdit.bind(this);
     this.toDelete = this.toDelete.bind(this);
-    this.toPortfolioList = this.toPortfolioList.bind(this);
-    this.toPortfolioProfile = this.toPortfolioProfile.bind(this);
+    this.toOfferList = this.toOfferList.bind(this);
+    this.toOfferProfile = this.toOfferProfile.bind(this);
     this.compartirURL = this.compartirURL.bind(this);
 
     this.actualizar();
   }
 
   actualizar() {
-    fetch('/api/user/' + this.state.idLogged).then(res => res.json()).then(data => {
-      if (data.Portfolios == null) {
+    fetch('/api/contractor/' + this.state.idLogged).then(res => res.json()).then(data => {
+      if (data.Offers == null) {
         this.setState({
-          user: data
+            contractor: data
         });
       }
       else {
         this.setState({
           user: data,
-          portafolios: data.Portfolios
+          portafolios: data.Offers
         });
       }
     });
@@ -60,20 +57,20 @@ class UserPortfolios extends Component {
     })
   }
 
-  toEdit(portafolio) {
+  toEdit(oferta) {
     this.setState({
       agregando: true,
-      cambiando: portafolio
+      cambiando: oferta
     })
   }
 
-  toDelete(portafolio) {
+  toDelete(oferta) {
     this.setState({
-      borrando: portafolio
+      borrando: oferta
     });
   }
 
-  postPortfolio() {
+  postOffer() {
     this.setState({
       cambiando: null,
       agregando: false
@@ -81,7 +78,7 @@ class UserPortfolios extends Component {
     this.actualizar();
   }
 
-  putPortfolio() {
+  putOffer() {
     this.setState({
       cambiando: null,
       agregando: false,
@@ -89,16 +86,16 @@ class UserPortfolios extends Component {
     this.actualizar();
   }
 
-  deletePortfolio(id) {
-    fetch('/api/portfolio/' + id).then(res => res.json()).then(data => {
+  deleteOffer(id) {
+    fetch('/api/contractor/'+this.state.idLogged+'/offer/'+ id).then(res => res.json()).then(data => {
 
-      fetch('/api/portafolio/' + id, { method: 'DELETE' }).then(res => {
+      fetch('/api/contractor/'+this.state.idLogged+'/offer/'+ id, { method: 'DELETE' }).then(res => {
         if (res.ok) {
           M.toast({ html: 'Portafolio eliminado', classes: 'rounded' });
           this.actualizar();
         }
         else {
-          throw new Error("El portafolio no ha podido eliminar");
+          throw new Error("El oferta no ha podido eliminar");
         }
       }).catch(error => M.toast({ html: error.message, classes: 'rounded' }));
 
@@ -112,15 +109,15 @@ class UserPortfolios extends Component {
   compartirURL(url) {
     getIP().then((ip) => {
       copy('http://' + ip + ':8082/' + url);
-      M.toast({ html: 'URL del portafolio copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
+      M.toast({ html: 'URL del oferta copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
       console.log(ip);
     }).catch((error) => {
       console.error(error);
     });
   }
 
-  toPortfolioProfile(contest) {
-    fetch('/api/portafolio/' + contest.id).then(res => res.json()).then(data => {
+  toOfferProfile(offer) {
+    fetch('/api/contractor/'+this.state.idLogged+'/offer/'+ offer.id).then(res => res.json()).then(data => {
       this.setState({
         cambiando: null,
         agregando: false,
@@ -129,7 +126,7 @@ class UserPortfolios extends Component {
     });
   }
 
-  toPortfolioList() {
+  toOfferList() {
     this.setState({
       cambiando: null,
       agregando: false,
@@ -143,74 +140,64 @@ class UserPortfolios extends Component {
 
   render() {
 
-    const portafolios = this.state.portafolios.map((portafolio, i) => {
+    const ofertas = this.state.ofertas.map((oferta, i) => {
       return (
-        <div className="col s4" key={portafolio.id}>
+        <div className="col s4" key={oferta.id}>
           <div className="card medium sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
-              <img className="activator" src={"./supervoicesfiles/images/" + portafolio.portfolio_banner} />
+              <img className="activator" src={"./supervoicesfiles/images/" + oferta.offer_banner} />
             </div>
             <div className="card-content">
-              <span className="card-title activator grey-text text-darken-4">{portafolio.portfolio_name}<i className="material-icons right">more_vert</i></span>
-              <p><i>/{portafolio.portfolio_url}</i></p>
+              <span className="card-title activator grey-text text-darken-4">{oferta.offer_name}<i className="material-icons right">more_vert</i></span>
+              <p><i>/{oferta.portfolio_url}</i></p>
             </div>
             <div className="card-reveal">
-              <span className="card-title grey-text text-darken-4">{portafolio.portfolio_name}<i className="material-icons right">close</i></span>
+              <span className="card-title grey-text text-darken-4">{oferta.offer_name}<i className="material-icons right">close</i></span>
               <p>
                 <b>
                   <FormattedMessage
-                    id="Portfolios.Type"
-                    defaultMessage="Type"
+                    id="Offers.Terms"
+                    defaultMessage="Terms"
                   />
                 </b>
-                {portafolio.portfolio_type}
+                {oferta.offer_terms}
               </p>
               <p>
                 <b>
                   <FormattedMessage
-                    id="Portfolios.Description"
+                    id="Offers.Description"
                     defaultMessage="Description"
                   />
                 </b>
-                {portafolio.portfolio_description}
+                {oferta.portfolio_description}
               </p>
             </div>
             <div className="card-action">
-              <a href="#" onClick={() => this.toPortfolioProfile(portafolio)} className="black-text">
+              <a href="#" onClick={() => this.toOfferProfile(oferta)} className="black-text">
                 <b>
                   <FormattedMessage
-                    id="Portfolios.Open"
+                    id="Offers.Open"
                     defaultMessage="Description"
                   />
                 </b>
               </a>
-              <a href="#" onClick={() => this.compartirURL(portafolio.portfolio_url)} className="black-text">
-                <b>
-                  <FormattedMessage
-                    id="Portfolios.Share"
-                    defaultMessage="Share"
-                  />
-                </b>
-              </a>
-              <a href="#confirmDeleteModal" onClick={() => this.toDelete(portafolio.id)} className="modal-trigger black-text">
+              <a href="#confirmDeleteModal" onClick={() => this.toDelete(oferta.id)} className="modal-trigger black-text">
                 <i className="material-icons right">
                   <FormattedMessage
-                    id="Portfolios.Delete"
+                    id="Offers.Delete"
                     defaultMessage="Delete"
                   />
                 </i>
               </a>
-              <a href="#" onClick={() => this.toEdit(portafolio)} className="black-text">
+              <a href="#" onClick={() => this.toEdit(oferta)} className="black-text">
                 <i className="material-icons right"><FormattedMessage
-                  id="Portfolios.Edit"
+                  id="Offers.Edit"
                   defaultMessage="Edit"
                 />
                 </i>
               </a>
             </div>
           </div>
-
-
         </div>
       )
     })
@@ -222,8 +209,8 @@ class UserPortfolios extends Component {
           this.state.portfolioActivo == null ?
             <div className="container">
               <center><h5> <FormattedMessage
-                id="Portfolios.Title"
-                defaultMessage="My Portfolios"
+                id="Offers.Title"
+                defaultMessage="My Offers"
               /> {!this.state.agregando ? <a onClick={this.toAdd} className="btn-floating btn-large waves-effect waves-light red darken-3"><i className="material-icons">add</i></a> : null}</h5></center>
               <br></br>
 
@@ -231,7 +218,7 @@ class UserPortfolios extends Component {
                 this.state.agregando ?
                   <div className="row">
                     <div className="container">
-                      <AddPortfolio post={this.postPortfolio} put={this.putPortfolio} idLogged={this.state.user.id} portafolio={this.state.cambiando} messages = {this.state.messages}/>
+                      <AddOffer post={this.postOffer} put={this.putOffer} idLogged={this.state.user.id} oferta={this.state.cambiando} />
                     </div>
                     <br></br>
                   </div>
@@ -243,21 +230,21 @@ class UserPortfolios extends Component {
               </div>
             </div>
             :
-            <PortfolioProfile portfolio={this.state.portfolioActivo} salir={this.toPortfolioList} externo={false} />
+            <OfferProfile offer={this.state.ofertaActiva} salir={this.toOfferList} externo={false} />
         }
 
         <div id="confirmDeleteModal" className="modal s6">
           <div className="modal-content">
             <h4>
               <FormattedMessage
-                id="Portfolios.DeleteTitle"
-                defaultMessage="Delete Portfolio?"
+                id="Offers.DeleteTitle"
+                defaultMessage="Delete Offer?"
               />
             </h4>
             <p>
               <FormattedMessage
-                id="Portfolios.DeleteMessage"
-                defaultMessage="If the portfolio has entries, these will be deleted as well. Are you sure you want to delete this portfolio?"
+                id="Offers.DeleteMessage"
+                defaultMessage="If the offer has entries, these will be deleted as well. Are you sure you want to delete this portfolio?"
               />
             </p>
           </div>
@@ -268,7 +255,7 @@ class UserPortfolios extends Component {
                 defaultMessage="No"
               />
             </a>
-            <a onClick={() => this.deletePortfolio(this.state.borrando)} className="modal-close waves-effect waves-green btn-flat">
+            <a onClick={() => this.deleteOffer(this.state.borrando)} className="modal-close waves-effect waves-green btn-flat">
               <FormattedMessage
                 id="App.Yes"
                 defaultMessage="Yes"
@@ -283,4 +270,4 @@ class UserPortfolios extends Component {
   }
 }
 
-export default UserPortfolios;
+export default ContractorOffers;

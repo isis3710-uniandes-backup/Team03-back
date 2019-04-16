@@ -7,7 +7,8 @@ var cors = require('cors');
 const Busboy = require('busboy');
 var indexRouter = require('./routes/index');
 const fs = require('fs');
-const imagesDir = path.join(__dirname,'public/files/images');
+const imagesDir = path.join(__dirname,'front/build/files/images');
+const bannerDir = path.join(__dirname,'front/build/files/images/banner');
 
 var app = express();
 app.use(cors());
@@ -51,7 +52,7 @@ app.post('/upload', function(req, res) {
 app.post('/banner', function(req, res) {
   var busboy = new Busboy({ headers: req.headers });
   busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-    var saveTo = path.join(__dirname+'/public/files/images/banner/', filename);
+    var saveTo = path.join(bannerDir, filename);
     console.log('Uploading: ' + saveTo);
     file.pipe(fs.createWriteStream(saveTo));
   });

@@ -35,6 +35,7 @@ class SignUp extends Component {
   handleSubmit(e) {
     e.preventDefault();
     var identified = false;
+    var user = false;
 
     if (this.state.user_switch) {
       if (this.state.user_password != this.state.user_password_confirm) {
@@ -47,39 +48,45 @@ class SignUp extends Component {
         M.toast({ html: 'Ingresa valores válidos para registrarse', classes: 'rounded' });
       }
       else {
-        const nuevoUsuario = { user_names: this.state.user_names, user_lastnames: this.state.user_lastnames, user_email: this.state.user_email, user_login: this.state.user_login, user_password: this.state.user_password, user_birthdate: this.state.user_birthdate };
-
-        fetch('/api/user', {
-          method: 'POST',
-          body: JSON.stringify(nuevoUsuario),
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        }).then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          else {
-            throw new Error("Ya existe una cuenta de usuario con este correo electrónico");
-          }
-        }).then(data => {
-          M.toast({ html: 'Se ha creado la cuenta correctamente', classes: 'rounded' });
-          const idIdentified = data.id;
-          this.props.enableSignUp({ idIdentified });
-        }).catch(error => M.toast({ html: error.message, classes: 'rounded' }));
+        this.setState({
+          user_birthdate: new Date(this.birthdate.value),
+          procesando: true
+        }, () => {
+          const nuevoUsuario = { user_names: this.state.user_names, user_lastnames: this.state.user_lastnames, user_email: this.state.user_email, user_login: this.state.user_login, user_password: this.state.user_password, user_birthdate: new Date(this.state.user_birthdate) };
+          console.log(nuevoUsuario);
+          fetch('/api/user', {
+            method: 'POST',
+            body: JSON.stringify(nuevoUsuario),
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            }
+          }).then(res => {
+            if (res.ok) {
+              return res.json();
+            }
+            else {
+              console.log(res);
+              throw new Error("Ya existe una cuenta de usuario con este correo electrónico");
+            }
+          }).then(data => {
+            M.toast({ html: 'Se ha creado la cuenta correctamente', classes: 'rounded' });
+            const idIdentified = data.id;
+            user = true;
+            this.props.enableSignUp({ idIdentified, user });
+          }).catch(error => M.toast({ html: error.message, classes: 'rounded' }));
+        });
       }
     } else {
-      if (this.state.contractor_password != this.state.contractor_password_confirm) {
+      if (this.state.contractor_password != this.state.contractor_password) {
         M.toast({ html: 'Las contraseñas no coinciden', classes: 'rounded' });
       }
       else if (this.state.contractor_password.length < 8) {
         M.toast({ html: 'La contraseña debe tener 8 caracteres mínimo', classes: 'rounded' });
       }
-      else if (this.state.contractor_password == '' || this.state.contractor_name == '' || this.state.contractor_email == '') {
+      else if (this.state.contractor_password == '' || this.state.contractor_email == '' || this.state.contractor_login == '' || this.state.contractor_name == '') {
         M.toast({ html: 'Ingresa valores válidos para registrarse', classes: 'rounded' });
-      }
-      else {
+      } else {
         const nuevoContratista = { contractor_name: this.state.contractor_name, contractor_email: this.state.contractor_email, contractor_login: this.state.contractor_login, contractor_password: this.state.contractor_password };
 
         fetch('/api/contractor', {
@@ -99,7 +106,7 @@ class SignUp extends Component {
         }).then(data => {
           M.toast({ html: 'Se ha creado la cuenta correctamente', classes: 'rounded' });
           const idIdentified = data.id;
-          this.props.enableSignUp({ idIdentified });
+          this.props.enableSignUp({ idIdentified, user });
         }).catch(error => M.toast({ html: error.message, classes: 'rounded' }));
       }
     }
@@ -114,6 +121,8 @@ class SignUp extends Component {
       user_birthdate: date
     });
   }
+
+
 
   render() {
     return (
@@ -135,18 +144,18 @@ class SignUp extends Component {
                 </h6>
               </center>
               <br></br>
-              <div class="col s12">
-                <ul class="tabs">
-                  <li class="tab col s6">
-                    <a class="active" href="#userForm">
+              <div className="col s12" >
+                <ul className="tabs">
+                  <li className="tab col s6">
+                    <a className="active" href="#userForm" onClick={() => this.setState({ user_switch: true })}>
                       <FormattedMessage
                         id="SignUp.UserTitle"
                         defaultMessage="User"
                       />
                     </a>
                   </li>
-                  <li class="tab col s6">
-                    <a href="#conForm">
+                  <li className="tab col s6">
+                    <a href="#conForm" onClick={() => this.setState({ user_switch: false })}>>
                       <FormattedMessage
                         id="SignUp.ContractorTitle"
                         defaultMessage="Contractor"
@@ -155,7 +164,7 @@ class SignUp extends Component {
                   </li>
                 </ul>
               </div>
-              <div class="col s12" id="userForm">
+              <div className="col s12" id="userForm" >
                 <div className="row" >
                   <div className="input-field col s6">
                     <input id="user_names" type="text" className="validate" onChange={this.handleInput} />
@@ -248,7 +257,7 @@ class SignUp extends Component {
                   </div>
                 </div>
               </div>
-              <div class="col s12" id="conForm">
+              <div className="col s12" id="conForm">
                 <div className="row">
                   <div className="input-field col s12">
                     <input id="contractor_name" type="text" className="validate" onChange={this.handleInput} />

@@ -8,21 +8,16 @@ class ContractorProfile extends Component{
     this.state={
         idLogged : this.props.idLogged,
         contractor:{},
-        contracts: [],  
-        services: []        
+        creditcards:[],
+        contracts: [] 
     }
     fetch('/api/contractor/'+this.state.idLogged).then(res => res.json()).then(data => { 
-        if(data.Portfolios == null){
-          this.setState({
-            contractor:data
-          });
-        }
-        else{
           this.setState({
             contractor:data,
-            contracts: data.Contracts
-          });
-        }        
+            contracts: data.Contracts,
+            creditcards: data.CreditCards,
+
+          }); 
       });    
   }
   

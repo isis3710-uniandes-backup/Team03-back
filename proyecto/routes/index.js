@@ -23,6 +23,7 @@ router.delete('/api/user/:id', userController.delete);
 
 router.get('/api/portfolio', portfolioController.list);
 router.get('/api/portfolio/:id', portfolioController.getById);
+router.get('/api/portfolio/:portfolio_url', portfolioController.getByUrl);
 router.get('/api/portfolio/:id/user', portfolioController.getUserPortfolio);
 router.post('/api/portfolio', portfolioController.add);
 router.put('/api/portfolio/:id', portfolioController.update);
@@ -55,6 +56,8 @@ routerCreditCard.post('/', creditCardController.add);
 routerCreditCard.put('/:idCreditCard', creditCardController.update);
 routerCreditCard.delete('/:idCreditCard', creditCardController.delete);
 
+router.get('/api/offer', offerController.listAll);
+router.get('/api/offer/:id',offerController.getById);
 routerOffer.get('/', offerController.list);
 routerOffer.get('/:idOffer', offerController.getById);
 routerOffer.post('/', offerController.add);

@@ -29,6 +29,22 @@ module.exports ={
           .catch((error) => res.status(400).send(error));
       },
 
+      getByUrl(req, res) {
+        return Portfolio
+          .findAll({
+            where: {
+              portfolio_url: req.params.portfolio_url
+            },
+            include: [Entry],
+            order: [
+              ['createdAt', 'DESC'],
+              [Entry, 'createdAt', 'DESC'],
+            ],
+          })
+          .then((portfolios) => res.status(200).send(portfolios))
+          .catch((error) => { res.status(400).send(error); });
+      },
+
       add(req, res) {
         return Portfolio
           .create({

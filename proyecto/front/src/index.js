@@ -6,12 +6,14 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import es from 'react-intl/locale-data/es';
 import localeData from './locales/data.json';
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import PortfolioFromURL from './PortfolioFromURL'
 
 addLocaleData([...en, ...es]);
 
 const language = (navigator.languages && navigator.languages[0]) ||
-                     navigator.language ||
-                     navigator.userLanguage;
+    navigator.language ||
+    navigator.userLanguage;
 
 // Split locales with a region code
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
@@ -22,7 +24,12 @@ const messages = localeData[languageWithoutRegionCode] || localeData[language] |
 
 render(
     <IntlProvider locale={language} messages={messages}>
-    <App messages={messages}/>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/:portfolio" component={PortfolioFromURL}/>
+                <Route path="/" component ={()=>  <App messages={messages} />} exact/>    
+            </Switch>
+        </BrowserRouter>
     </IntlProvider>,
-     document.getElementById("app")
+    document.getElementById("app")
 );

@@ -8,7 +8,8 @@ class LogIn extends Component {
         super(props);
         this.state = {
             user_login: '',
-            user_password: ''
+            user_password: '',
+            messages: this.props.messages
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +36,7 @@ class LogIn extends Component {
             });
 
             if (identified == true) {
-                M.toast({ html: 'Sesión iniciada', classes: 'rounded' });
+                M.toast({ html: this.state.messages['SignIn.Identified'], classes: 'rounded' });
                 this.props.enableLogIn({ idIdentified, user });
             }
             else {
@@ -48,13 +49,13 @@ class LogIn extends Component {
                     });
 
                     if (identified == true) {
-                        M.toast({ html: 'Sesión iniciada', classes: 'rounded' });
+                        M.toast({ html: this.state.messages['SignIn.Identified'], classes: 'rounded' });
                         this.props.enableLogIn({ idIdentified, user });
                     } else if (this.state.user_password == '' || this.state.user_login == '') {
-                        M.toast({ html: 'Ingresa valores válidos para iniciar sesión', classes: 'rounded' });
+                        M.toast({ html: this.state.messages['SignIn.NotValid'], classes: 'rounded' });
                     }
                     else {
-                        M.toast({ html: 'Correo electrónico/Login sin registrar o contraseña incorrecta', classes: 'rounded' });
+                        M.toast({ html: this.state.messages['SignIn.NoIdentified'], classes: 'rounded' });
                     }
                 });
             }
@@ -93,7 +94,7 @@ class LogIn extends Component {
                                             defaultMessage="Login or Email"
                                         />
                                     </label>
-                                    <span className="helper-text" data-error="No es válido" data-success="Es válido">
+                                    <span className="helper-text" data-error={this.state.messages['SignIn.NoVerified']} data-success={this.state.messages['SignIn.Verified']}>
                                         <FormattedMessage
                                             id="SignIn.UserLoginHint"
                                             defaultMessage="Enter your email or login ..."

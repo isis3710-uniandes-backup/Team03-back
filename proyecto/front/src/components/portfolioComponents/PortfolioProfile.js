@@ -30,7 +30,7 @@ class PortfolioProfile extends Component {
     return (
       <div className="container">
         <div className="carousel carousel-slider">
-          <a className="carousel-item" href="#one!"><img className="responsive-img" src={"./files/images/banner/" + this.state.portfolio_url} /></a>
+          <a className="carousel-item" href="#one!"><img className="responsive-img" src={"./files/images/banner/" + this.state.portfolio_banner} /></a>
         </div>
         <br></br>
         <h5><b>{this.state.portfolio_name}</b></h5>

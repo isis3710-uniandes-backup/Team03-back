@@ -13,7 +13,6 @@ class UserProfile extends Component {
       services: []
     }
     fetch('/api/user/' + this.state.idLogged).then(res => res.json()).then(data => {
-      console.log(data);
       if (data.Portfolios == null) {
         this.setState({
           user: data
