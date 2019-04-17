@@ -52,13 +52,13 @@ class AddOffer extends Component {
             const banner = this.uploadInput.files[0];
             if (this.props.oferta != null) {
                 if (this.state.offer_name === '' || this.state.offer_terms === '' || this.state.offer_begindate === '') {
-                    M.toast({ html: 'Ingresa valores válidos para la oferta', classes: 'rounded' });
+                    M.toast({ html: this.state.messages['Offer.ValidValues'], classes: 'rounded' });
                 }
-                else if((new Date(this.state.offer_begindate)).getTime() > (new Date(this.state.offer_enddate)).getTime()){
-                    M.toast({html:'La fecha de fin debe ser posterior a la de inicio', classes: 'rounded'});
+                else if ((new Date(this.state.offer_begindate)).getTime() > (new Date(this.state.offer_enddate)).getTime()) {
+                    M.toast({ html: this.state.messages['Dates.Error'], classes: 'rounded' });
                 }
-                else if((new Date()).getTime() >= (new Date(this.state.offer_enddate)).getTime()){
-                    M.toast({html:'La fecha de fin debe ser posterior a la fecha actual', classes: 'rounded'});
+                else if ((new Date()).getTime() >= (new Date(this.state.offer_enddate)).getTime()) {
+                    M.toast({ html: this.state.messages['Date.EndError'], classes: 'rounded' });
                 }
                 else {
                     var nuevaOferta = {};
@@ -68,7 +68,6 @@ class AddOffer extends Component {
                     else {
                         nuevaOferta = { offer_name: this.state.offer_name, offer_banner: this.state.offer_banner, offer_terms: this.state.offer_terms, offer_begindate: new Date(this.state.offer_begindate), offer_enddate: new Date(this.state.offer_enddate) };
                     }
-                    console.log(nuevoConcurso);
 
                     fetch('/api/contractor' + this.state.ContractorId + '/offer/' + this.props.oferta.id, {
                         method: 'PUT',
@@ -94,7 +93,7 @@ class AddOffer extends Component {
                     }).then(data => {
                         this.setState({
                             procesando: false
-                        }, () => { M.toast({ html: 'Se ha editado la oferta correctamente', classes: 'rounded' }); });
+                        }, () => { M.toast({ html: this.state.messages['Offer.CorrectEdit'], classes: 'rounded' }); });
 
                         this.props.put();
 
@@ -103,13 +102,13 @@ class AddOffer extends Component {
             }
             else {
                 if (banner == null || this.state.offer_name == '' || this.state.offer_terms == '') {
-                    M.toast({ html: 'Ingresa valores válidos para la oferta y una imagen para su perfil', classes: 'rounded' });
+                    M.toast({ html: this.state.messages['Offer.ValidValuesImage'], classes: 'rounded' });
                 }
-                else if((new Date(this.state.offer_begindate)).getTime() > (new Date(this.state.offer_enddate)).getTime()){
-                    M.toast({html:'La fecha de fin debe ser posterior a la de inicio', classes: 'rounded'});
+                else if ((new Date(this.state.offer_begindate)).getTime() > (new Date(this.state.offer_enddate)).getTime()) {
+                    M.toast({ html: this.state.messages['Dates.Error'], classes: 'rounded' });
                 }
-                else if((new Date()).getTime() >= (new Date(this.state.offer_enddate)).getTime()){
-                    M.toast({html:'La fecha de fin debe ser posterior a la fecha actual', classes: 'rounded'});
+                else if ((new Date()).getTime() >= (new Date(this.state.offer_enddate)).getTime()) {
+                    M.toast({ html: this.state.messages['Date.EndError'], classes: 'rounded' });
                 }
                 else {
                     nuevaOferta = { offer_name: this.state.offer_name, offer_banner: banner.name, offer_terms: this.state.offer_terms, offer_begindate: new Date(this.state.offer_begindate), offer_enddate: new Date(this.state.offer_enddate) };
@@ -136,7 +135,7 @@ class AddOffer extends Component {
                     }).then(data => {
                         this.setState({
                             procesando: false
-                        }, () => { M.toast({ html: 'Se ha creado la oferta correctamente', classes: 'rounded' }); });
+                        }, () => { M.toast({ html: this.state.messages['Offer.CorrectCreate'], classes: 'rounded' }); });
 
                         this.props.post();
 
@@ -178,7 +177,14 @@ class AddOffer extends Component {
 
             <div>
                 <form className="col s12">
-                    <center><h6>Datos de tu oferta</h6></center>
+                    <center>
+                        <h6>
+                            <FormattedMessage
+                                id="Offer.DataTitle"
+                                defaultMessage="Offer Data"
+                            />
+                        </h6>
+                    </center>
                     <br></br>
                     {
                         this.props.oferta != null ?
@@ -207,7 +213,7 @@ class AddOffer extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s6">
-                                        <input type="text" className="datepicker" id="offer_begindate" onChange={this.handleInput} ref={(ref) => { this.begindate = ref; }}  value = {new Date(this.state.offer_begindate)} />
+                                        <input type="text" className="datepicker" id="offer_begindate" onChange={this.handleInput} ref={(ref) => { this.begindate = ref; }} value={new Date(this.state.offer_begindate)} />
                                         <label htmlFor="offer_begindate">
                                             <FormattedMessage
                                                 id="Offer.BeginDateLabel"
@@ -216,10 +222,10 @@ class AddOffer extends Component {
                                         </label>
                                     </div>
                                     <div className="input-field col s6">
-                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }}  value = {new Date(this.state.offer_enddate)} />
+                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }} value={new Date(this.state.offer_enddate)} />
                                         <label htmlFor="offer_enddate">
                                             <FormattedMessage
-                                                id="SignUp.LastDateLabel"
+                                                id="Offer.LastDateLabel"
                                                 defaultMessage="Last date"
                                             />
                                         </label>
@@ -233,7 +239,7 @@ class AddOffer extends Component {
                                                 <input type="file" ref={(ref) => { this.uploadInput = ref; }} />
                                             </div>
                                             <div className="file-path-wrapper">
-                                                <input className="file-path validate" type="text" placeholder="Puedes cambiar la imagen del oferta" />
+                                                <input className="file-path validate" type="text" placeholder={this.state.messages['Offer.ImageChangePlaceHolder']} />
                                             </div>
                                         </div>
                                     </div>
@@ -274,10 +280,10 @@ class AddOffer extends Component {
                                         </label>
                                     </div>
                                     <div className="input-field col s6">
-                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }}/>
+                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }} />
                                         <label htmlFor="offer_enddate">
                                             <FormattedMessage
-                                                id="SignUp.LastDateLabel"
+                                                id="Offer.LastDateLabel"
                                                 defaultMessage="Last date"
                                             />
                                         </label>
@@ -291,7 +297,7 @@ class AddOffer extends Component {
                                                 <input type="file" ref={(ref) => { this.uploadInput = ref; }} />
                                             </div>
                                             <div className="file-path-wrapper">
-                                                <input className="file-path validate" type="text" placeholder="Sube la imagen de tu oferta" />
+                                                <input className="file-path validate" type="text" placeholder={this.state.messages['Offer.ImageLoadPlaceHolder']} />
                                             </div>
                                         </div>
                                     </div>
@@ -312,7 +318,19 @@ class AddOffer extends Component {
                         : null
                 }
                 <br></br>
-                <center><a onClick={this.cancelar} className="waves-effect waves-light btn gray darken-2">Cancelar</a>   <a onClick={this.handleSubmit} className="waves-effect waves-light btn red darken-3">Confirmar</a></center>
+                <center>
+                    <a onClick={this.cancelar} className="waves-effect waves-light btn gray darken-2">
+                        <FormattedMessage
+                            id="App.Cancel"
+                            defaultMessage="Cancel"
+                        />
+                    </a>
+                    <a onClick={this.handleSubmit} className="waves-effect waves-light btn red darken-3">
+                        <FormattedMessage
+                            id="App.Confirm"
+                            defaultMessage="Confirm"
+                        />
+                    </a></center>
 
             </div>
         )

@@ -29,7 +29,6 @@ class ContractorOffers extends Component {
     this.toDelete = this.toDelete.bind(this);
     this.toOfferList = this.toOfferList.bind(this);
     this.toOfferProfile = this.toOfferProfile.bind(this);
-    this.compartirURL = this.compartirURL.bind(this);
 
     this.actualizar();
   }
@@ -91,11 +90,11 @@ class ContractorOffers extends Component {
 
       fetch('/api/contractor/'+this.state.idLogged+'/offer/'+ id, { method: 'DELETE' }).then(res => {
         if (res.ok) {
-          M.toast({ html: 'Portafolio eliminado', classes: 'rounded' });
+          M.toast({ html: 'Oferta eliminada', classes: 'rounded' });
           this.actualizar();
         }
         else {
-          throw new Error("El oferta no ha podido eliminar");
+          throw new Error("La oferta no ha podido eliminar");
         }
       }).catch(error => M.toast({ html: error.message, classes: 'rounded' }));
 
@@ -103,16 +102,6 @@ class ContractorOffers extends Component {
 
     this.setState({
       borrando: null
-    });
-  }
-
-  compartirURL(url) {
-    getIP().then((ip) => {
-      copy('http://' + ip + ':8082/' + url);
-      M.toast({ html: 'URL del oferta copiada en el portapapeles', displayLength: 10000, classes: 'rounded' });
-      console.log(ip);
-    }).catch((error) => {
-      console.error(error);
     });
   }
 

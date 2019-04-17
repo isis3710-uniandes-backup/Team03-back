@@ -12,6 +12,8 @@
     "App.SignOutMessage": "Are you sure you want to log out?",
     "App.No": "No",
     "App.Yes": "Yes",
+    "App.Cancel": "Cancel",
+    "App.Confirm":"Confirm",
     "Home.greetings": "Thank you for your visit!",
     "Home.safety": "This page ensures the security of your shared media files. Keep calm.",
     "Home.creators": "Creators",
@@ -69,7 +71,20 @@
     "Portfolios.Share": "Share",
     "UserPortfolios.Title": "My Portfolios",
     "Portfolios.DeleteTitle": "Delete Portfolio?",
-    "Portfolios.DeleteMessage": "If the portfolio has entries, these will be deleted as well. Are you sure you want to delete this portfolio?"
+    "Portfolios.DeleteMessage": "If the portfolio has entries, these will be deleted as well. Are you sure you want to delete this portfolio?",
+    "Offer.ValidValues":"Enter valid values for the offer",
+    "Dates.Error":"The end date must be after the start date",
+    "Date.EndError":"The end date must be after the current date",
+    "Offer.ValidValuesImage":"Enter valid values for the offer and an image for the banner",
+    "Offer.CorrectEdit":"The offer has been edited correctly",
+    "Offer.CorrectCreate":"The offer has been created correctly",
+    "Offer.DataTitle":"Offer Date",
+    "Offer.Title":"Offer Title",
+    "Offer.Terms":"Terms",
+    "Offer.BeginDateLabel": "Initial Date",
+    "Offer.LastDateLabel": "Final Date",
+    "Offer.ImageLoadPlaceHolder":"Upload the image for the banner of your offer",
+    "Offer.ImageChangePlaceHolder":"You can change the image of the offer"
   
   },
   "es": {
@@ -85,6 +100,8 @@
     "App.SignOutMessage": "Esta seguro que quiere salir?",
     "App.No": "No",
     "App.Yes": "Si",
+    "App.Cancel": "Cancelar",
+    "App.Confirm":"Confirmar",
     "Home.greetings": "Gracias por su visita!",
     "Home.safety": "Esta pagina garantiza la seguridad de sus datos y archivos. Sientase tranquilo.",
     "Home.creators": "Creadores",
@@ -142,6 +159,19 @@
     "Portfolios.Share": "Compartir",
     "UserPortfolios.Title": "Mis Portafolios",
     "Portfolios.DeleteTitle": "Borrar el Portafolio?",
-    "Portfolios.DeleteMessage": "Si el portafolio tiene entradas, estas también se eliminarán. ¿Estás seguro de que quieres eliminar este portafolio?"
+    "Portfolios.DeleteMessage": "Si el portafolio tiene entradas, estas también se eliminarán. ¿Estás seguro de que quieres eliminar este portafolio?",
+    "Offer.ValidValues":"Ingresa valores válidos para la oferta",
+    "Dates.Error":"La fecha de fin debe ser posterior a la de inicio",
+    "Date.EndError":"La fecha de fin debe ser posterior a la fecha actual",
+    "Offer.ValidValuesImage":"Ingresa valores válidos para la oferta y una imagen para su perfil",
+    "Offer.CorrectEdit":"Se ha editado la oferta correctamente",
+    "Offer.CorrectCreate":"Se ha creado la oferta correctamente",
+    "Offer.DataTitle":"Informacion de la Oferta",
+    "Offer.Title":"Titulo de la Oferta",
+    "Offer.Terms":"Terminos",
+    "Offer.BeginDateLabel": "Fecha Inicial",
+    "Offer.LastDateLabel": "Fecha Final",
+    "Offer.ImageLoadPlaceHolder":"Sube la imagen para el banner de tu oferta.",
+    "Offer.ImageChangePlaceHolder":"Puedes cambiar la imagen de la oferta."
   }
 }

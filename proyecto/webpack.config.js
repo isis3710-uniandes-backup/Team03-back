@@ -1,3 +1,4 @@
+const CopyPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: './front/src/index.js',
     output: { path: __dirname + '/public', filename: 'bundle.js' },
@@ -30,5 +31,10 @@ module.exports = {
                     use: ['style-loader', 'css-loader']
                 }
             ]
-    }
+    },
+    plugins: [
+        new CopyPlugin([
+          { from: './front/public/favicon.ico', to: './favicon.ico' },
+        ]),
+      ],
 }

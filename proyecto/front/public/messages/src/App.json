@@ -12,8 +12,8 @@
     "defaultMessage": "Sign Out"
   },
   {
-    "id": "App.ContractorContracts",
-    "defaultMessage": "My Contracts"
+    "id": "App.ContractorOffers",
+    "defaultMessage": "My Offers"
   },
   {
     "id": "App.SignUp",
