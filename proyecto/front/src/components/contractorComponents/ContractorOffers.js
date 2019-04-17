@@ -3,7 +3,7 @@ import copy from 'copy-to-clipboard';
 import M from "materialize-css";
 import AddOffer from './AddOffer';
 import OfferProfile from '../offerComponents/OfferProfile';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage,FormattedDate } from 'react-intl';
 
 class ContractorOffers extends Component {
 
@@ -121,7 +121,7 @@ class ContractorOffers extends Component {
       this.setState({
         cambiando: null,
         agregando: false,
-        contestActivo: data
+        ofertaActiva: data
       });
     });
   }
@@ -130,7 +130,7 @@ class ContractorOffers extends Component {
     this.setState({
       cambiando: null,
       agregando: false,
-      contestActivo: null
+      ofertaActiva: null
     })
   }
 
@@ -145,11 +145,10 @@ class ContractorOffers extends Component {
         <div className="col s4" key={oferta.id}>
           <div className="card medium sticky-action">
             <div className="card-image waves-effect waves-block waves-light">
-              <img className="activator" src={"./supervoicesfiles/images/" + oferta.offer_banner} />
+              <img className="activator" src={"./files/images/banner/" + oferta.offer_banner} />
             </div>
             <div className="card-content">
               <span className="card-title activator grey-text text-darken-4">{oferta.offer_name}<i className="material-icons right">more_vert</i></span>
-              <p><i>/{oferta.portfolio_url}</i></p>
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">{oferta.offer_name}<i className="material-icons right">close</i></span>
@@ -157,7 +156,7 @@ class ContractorOffers extends Component {
                 <b>
                   <FormattedMessage
                     id="Offers.Terms"
-                    defaultMessage="Terms"
+                    defaultMessage="Terms: "
                   />
                 </b>
                 {oferta.offer_terms}
@@ -165,11 +164,20 @@ class ContractorOffers extends Component {
               <p>
                 <b>
                   <FormattedMessage
-                    id="Offers.Description"
-                    defaultMessage="Description"
+                    id="Offers.BeginDate"
+                    defaultMessage="Initial Date: "
                   />
                 </b>
-                {oferta.portfolio_description}
+                <FormattedDate value={new Date(oferta.offer_begindate)}/>
+              </p>
+              <p>
+                <b>
+                  <FormattedMessage
+                    id="Offers.EndDate"
+                    defaultMessage="Last Date: "
+                  />
+                </b>
+                <FormattedDate value={new Date(oferta.offer_enddate)}/>
               </p>
             </div>
             <div className="card-action">
@@ -194,7 +202,7 @@ class ContractorOffers extends Component {
 
       <div>
         {
-          this.state.portfolioActivo == null ?
+          this.state.ofertaActiva == null ?
             <div className="container">
               <center><h5> <FormattedMessage
                 id="Offers.Title"
@@ -206,7 +214,7 @@ class ContractorOffers extends Component {
                 this.state.agregando ?
                   <div className="row">
                     <div className="container">
-                      <AddOffer post={this.postOffer} put={this.putOffer} idLogged={this.state.user.id} oferta={this.state.cambiando} />
+                      <AddOffer post={this.postOffer} put={this.putOffer} idLogged={this.state.idLogged} oferta={this.state.cambiando} />
                     </div>
                     <br></br>
                   </div>

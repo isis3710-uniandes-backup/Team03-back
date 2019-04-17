@@ -207,7 +207,7 @@ class AddOffer extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s6">
-                                        <input type="text" className="datepicker" id="offer_begindate" onChange={this.handleInput} ref={(ref) => { this.begindate = ref; }}  value = {this.state.offer_begindate} />
+                                        <input type="text" className="datepicker" id="offer_begindate" onChange={this.handleInput} ref={(ref) => { this.begindate = ref; }}  value = {new Date(this.state.offer_begindate)} />
                                         <label htmlFor="offer_begindate">
                                             <FormattedMessage
                                                 id="Offer.BeginDateLabel"
@@ -216,7 +216,7 @@ class AddOffer extends Component {
                                         </label>
                                     </div>
                                     <div className="input-field col s6">
-                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }}  value = {this.state.offer_enddate} />
+                                        <input type="text" className="datepicker" id="offer_enddate" onChange={this.handleInput} ref={(ref) => { this.enddate = ref; }}  value = {new Date(this.state.offer_enddate)} />
                                         <label htmlFor="offer_enddate">
                                             <FormattedMessage
                                                 id="SignUp.LastDateLabel"

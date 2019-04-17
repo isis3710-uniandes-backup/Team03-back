@@ -95,7 +95,9 @@ class App extends Component {
   toProfile() {
     this.setState({
       viendoPortafolios: false,
-      viendoTodosPortafolios: false
+      viendoTodosPortafolios: false,
+      viendoOfertas:false,
+      viendoTodasOfertas:false
     });
   }
 
@@ -108,7 +110,9 @@ class App extends Component {
       idIniciado: 0,
       nombreIniciado: 0,
       viendoPortafolios: false,
-      viendoTodosPortafolios: false
+      viendoTodosPortafolios: false,
+      viendoOfertas:false,
+      viendoTodasOfertas:false
     });
     M.toast({ html: 'Sesión cerrada', classes: 'rounded' });
   }
