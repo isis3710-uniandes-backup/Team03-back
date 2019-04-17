@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import OfferProfile from './OfferProfile'
-import {FormattedMessage} from 'react-intl'
+import {FormattedMessage,FormattedDate} from 'react-intl'
 class OfferList extends Component {
     constructor(props) {
         super(props);
@@ -8,6 +8,9 @@ class OfferList extends Component {
             ofertas: [],
             ofertaActivo: null
         }
+        this.actualizar = this.actualizar.bind(this);
+        this.toOfferList = this.toOfferList.bind(this);
+        this.toOfferProfile = this.toOfferProfile.bind(this);
         this.actualizar();
     }
 
@@ -18,6 +21,25 @@ class OfferList extends Component {
                     ofertas: data
                 });
             }
+        });
+    }
+
+    toOfferList() {
+        this.setState({
+          cambiando: null,
+          agregando: false,
+          ofertaActivo: null
+        })
+      }
+
+
+    toOfferProfile(offer) {
+        fetch('/api/offer/' + offer.id).then(res => res.json()).then(data => {
+            this.setState({
+                cambiando: null,
+                agregando: false,
+                ofertaActivo: data
+            });
         });
     }
 
@@ -35,8 +57,8 @@ class OfferList extends Component {
                         <div className="card-reveal">
                             <span className="card-title grey-text text-darken-4">{oferta.offer_name}<i className="material-icons right">close</i></span>
                             <p><b> Terms:</b> {oferta.offer_terms}</p>
-                            <p><b>Fecha Inicio:</b> {new Date(oferta.offer_begindate)}</p>
-                            <p><b>Fecha Fin:</b> {new Date(oferta.offer_enddate)}</p>
+                            <p><b>Fecha Inicio:</b>   <FormattedDate value={new Date(oferta.offer_begindate)}></FormattedDate></p>
+                            <p><b>Fecha Fin:</b>   <FormattedDate value={new Date(oferta.offer_enddate)}/></p>
                         </div>
                         <div className="card-action">
                             <a href="#" onClick={() => this.toOfferProfile(oferta)} className="black-text"><b>Abrir</b></a>

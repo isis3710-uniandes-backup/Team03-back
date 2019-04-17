@@ -10,10 +10,11 @@ class PortfolioList extends Component {
             portafolios: [],
             portfolioActivo: null
         }
-        this.actualizar();
+        this.actualizar = this.actualizar.bind(this);
         this.toPortfolioList = this.toPortfolioList.bind(this);
         this.toPortfolioProfile = this.toPortfolioProfile.bind(this);
         this.compartirURL = this.compartirURL.bind(this);
+        this.actualizar();
     }
 
     actualizar() {

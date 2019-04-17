@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "webpack": "webpack --mode development --watch"
+    "webpack": "npx webpack --config webpack.config.js"
   },
   "dependencies": {
     "busboy": "^0.3.1",

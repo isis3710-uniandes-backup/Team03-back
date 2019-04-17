@@ -47,6 +47,22 @@ module.exports = {
       .catch((error) => res.status(400).send(error));
   },
 
+  getByPk(req, res) {
+    return Offer
+    .findByPk(req.params.id, {
+        include: [Application]
+      })
+      .then((offer) => {
+        if (!offer) {
+          return res.status(404).send({
+            message: 'Offer not found.',
+          });
+        }
+        return res.status(200).send(offer);
+      })
+      .catch((error) => res.status(400).send(error));
+  },
+
   add(req, res) {
     return Offer
       .create({

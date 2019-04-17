@@ -5,6 +5,7 @@ import LogIn from './components/LogIn'
 import UserProfile from './components/userComponents/UserProfile'
 import ContractorProfile from './components/contractorComponents/contractorProfile'
 import UserPortfolios from './components/userComponents/UserPortfolios'
+import ContractorOffers from './components/contractorComponents/ContractorOffers'
 import M from "materialize-css";
 import { FormattedMessage } from 'react-intl';
 import PortfolioList from './components/portfolioComponents/PortfoliosList';
@@ -24,6 +25,7 @@ class App extends Component {
       idIniciado: 0,
       nombreIniciado: '',
       viendoPortafolios: false,
+      viendoOfertas: false,
       viendoTodasOfertas: false,
       viendoTodosPortafolios: false,
       messages: this.props.messages
@@ -35,6 +37,7 @@ class App extends Component {
     this.toHome = this.toHome.bind(this);
     this.toProfile = this.toProfile.bind(this);
     this.toPortfolios = this.toPortfolios.bind(this);
+    this.toOffers = this.toOffers.bind(this);
     this.toAllOffers = this.toAllOffers.bind(this);
     this.toAllPortfolios = this.toAllPortfolios.bind(this);
   }
@@ -113,6 +116,16 @@ class App extends Component {
   toPortfolios() {
     this.setState({
       viendoPortafolios: true,
+      viendoOfertas: false,
+      viendoTodosPortafolios: false,
+      viendoTodasOfertas: false
+    });
+  }
+
+  toOffers() {
+    this.setState({
+      viendoPortafolios: false,
+      viendoOfertas: true,
       viendoTodosPortafolios: false,
       viendoTodasOfertas: false
     });
@@ -124,7 +137,8 @@ class App extends Component {
       signup: false,
       viendoPortafolios: false,
       viendoTodosPortafolios: true,
-      viendoTodasOfertas: false
+      viendoTodasOfertas: false,
+      viendoOfertas: false
     });
   }
 
@@ -134,7 +148,8 @@ class App extends Component {
       signup: false,
       viendoPortafolios: false,
       viendoTodosPortafolios: false,
-      viendoTodasOfertas: true
+      viendoTodasOfertas: true,
+      viendoOfertas: false
     });
   }
 
@@ -145,7 +160,8 @@ class App extends Component {
         signup: false,
         viendoPortafolios: false,
         viendoTodosPortafolios: false,
-        viendoTodasOfertas: false
+        viendoTodasOfertas: false,
+        viendoOfertas: false
       });
     }
   }
@@ -202,10 +218,10 @@ class App extends Component {
                                 </a>
                               </li>
                               <li>
-                                <a onClick={this.toPortfolios}>
+                                <a onClick={this.toOffers}>
                                   <FormattedMessage
-                                    id="App.ContractorContracts"
-                                    defaultMessage="My Contracts"
+                                    id="App.ContractorOffers"
+                                    defaultMessage="My Offers"
                                   />
                                 </a>
                               </li>
@@ -326,41 +342,68 @@ class App extends Component {
                   </a>
                 </li>
               </ul>
-              :
-              <ul className="sidenav" id="mobile-demo">
-                <li>
-                  <a onClick={this.toSignUp}>
-                    <FormattedMessage
-                      id="App.SignUp"
-                      defaultMessage="Sign Up"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a onClick={this.toLogin}>
-                    <FormattedMessage
-                      id="App.Login"
-                      defaultMessage="Sign In"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a onClick={this.toAllPortfolios}>
-                    <FormattedMessage
-                      id="App.Portfolios"
-                      defaultMessage="Portfolios"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a onClick={this.toAllOffers}>
-                    <FormattedMessage
-                      id="App.Offers"
-                      defaultMessage="Offers"
-                    />
-                  </a>
-                </li>
-              </ul>
+              : this.state.iniciadoContractor ?
+                <ul className="sidenav" id="mobile-demo">
+                  <li>
+                    <a onClick={this.toProfile}>
+                      <FormattedMessage
+                        id="App.Profile"
+                        defaultMessage="Profile"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={this.toOffers}>
+                      <FormattedMessage
+                        id="App.ContractorOffers"
+                        defaultMessage="My Offers"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a className="modal-trigger" href="#confirmModal">
+                      <FormattedMessage
+                        id="App.SignOut"
+                        defaultMessage="Sign Out"
+                      />
+                    </a>
+                  </li>
+                </ul>
+                :
+                <ul className="sidenav" id="mobile-demo">
+                  <li>
+                    <a onClick={this.toSignUp}>
+                      <FormattedMessage
+                        id="App.SignUp"
+                        defaultMessage="Sign Up"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={this.toLogin}>
+                      <FormattedMessage
+                        id="App.Login"
+                        defaultMessage="Sign In"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={this.toAllPortfolios}>
+                      <FormattedMessage
+                        id="App.Portfolios"
+                        defaultMessage="Portfolios"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={this.toAllOffers}>
+                      <FormattedMessage
+                        id="App.Offers"
+                        defaultMessage="Offers"
+                      />
+                    </a>
+                  </li>
+                </ul>
           }
         </header>
         {/* Componentes principales */}
@@ -368,29 +411,34 @@ class App extends Component {
           {
             this.state.login ?
               <div>
-                <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} messages={this.state.messages}/>
+                <LogIn toSignUp={this.toSignUp} enableLogIn={this.logIn} messages={this.state.messages} />
               </div>
               : this.state.signup ?
                 <div>
-                  <SignUp enableSignUp={this.logIn} messages={this.state.messages}/>
+                  <SignUp enableSignUp={this.logIn} messages={this.state.messages} />
                 </div>
                 : this.state.iniciadoUser ?
                   this.state.viendoPortafolios ?
                     <div>
-                      <UserPortfolios idLogged={this.state.idIniciado} messages={this.state.messages}/>
+                      <UserPortfolios idLogged={this.state.idIniciado} messages={this.state.messages} />
                     </div>
                     :
                     <div>
-                      <UserProfile idLogged={this.state.idIniciado} messages={this.state.messages}/>
+                      <UserProfile idLogged={this.state.idIniciado} messages={this.state.messages} />
                     </div>
                   : this.state.iniciadoContractor ?
-                    <div>
-                      <ContractorProfile idLogged={this.state.idIniciado} messages={this.state.messages}/>
-                    </div>
+                    this.state.viendoOfertas ?
+                      <div>
+                        <ContractorOffers idLogged={this.state.idIniciado} messages={this.state.messages} />
+                      </div>
+                      :
+                      <div>
+                        <ContractorProfile idLogged={this.state.idIniciado} messages={this.state.messages} />
+                      </div>
                     :
                     this.state.viendoTodosPortafolios ?
                       <div>
-                        <PortfolioList messages={this.state.messages}/>
+                        <PortfolioList messages={this.state.messages} />
                       </div>
                       :
                       this.state.viendoTodasOfertas ?

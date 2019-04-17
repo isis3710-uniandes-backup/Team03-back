@@ -54,7 +54,7 @@ routerCreditCard.put('/:idCreditCard', creditCardController.update);
 routerCreditCard.delete('/:idCreditCard', creditCardController.delete);
 
 router.get('/api/offer', offerController.listAll);
-router.get('/api/offer/:id',offerController.getById);
+router.get('/api/offer/:id',offerController.getByPk);
 routerOffer.get('/', offerController.list);
 routerOffer.get('/:idOffer', offerController.getById);
 routerOffer.post('/', offerController.add);

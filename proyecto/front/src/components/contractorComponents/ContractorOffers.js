@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import copy from 'copy-to-clipboard';
 import M from "materialize-css";
-import AddOffer from './AddOffer'
+import AddOffer from './AddOffer';
 import OfferProfile from '../offerComponents/OfferProfile';
 import { FormattedMessage } from 'react-intl';
 
@@ -13,7 +13,7 @@ class ContractorOffers extends Component {
     this.state = {
       idLogged: this.props.idLogged,
       contractor: {},
-      portafolios: [],
+      ofertas: [],
       agregando: false,
       cambiando: null,
       borrando: null,
@@ -43,8 +43,8 @@ class ContractorOffers extends Component {
       }
       else {
         this.setState({
-          user: data,
-          portafolios: data.Offers
+          contractor: data,
+          ofertas: data.Offers
         });
       }
     });
@@ -117,7 +117,7 @@ class ContractorOffers extends Component {
   }
 
   toOfferProfile(offer) {
-    fetch('/api/contractor/'+this.state.idLogged+'/offer/'+ offer.id).then(res => res.json()).then(data => {
+    fetch('/api/offer/'+ offer.id).then(res => res.json()).then(data => {
       this.setState({
         cambiando: null,
         agregando: false,
@@ -177,24 +177,12 @@ class ContractorOffers extends Component {
                 <b>
                   <FormattedMessage
                     id="Offers.Open"
-                    defaultMessage="Description"
+                    defaultMessage="Abrir"
                   />
                 </b>
               </a>
-              <a href="#confirmDeleteModal" onClick={() => this.toDelete(oferta.id)} className="modal-trigger black-text">
-                <i className="material-icons right">
-                  <FormattedMessage
-                    id="Offers.Delete"
-                    defaultMessage="Delete"
-                  />
-                </i>
-              </a>
-              <a href="#" onClick={() => this.toEdit(oferta)} className="black-text">
-                <i className="material-icons right"><FormattedMessage
-                  id="Offers.Edit"
-                  defaultMessage="Edit"
-                />
-                </i>
+              <a href="#confirmDeleteModal" onClick={() => this.toDelete(oferta.id)} className="modal-trigger black-text"> <i className="material-icons right">delete</i></a>
+              <a href="#" onClick={() => this.toEdit(oferta)} className="black-text"><i className="material-icons right">edit</i>
               </a>
             </div>
           </div>
@@ -226,11 +214,11 @@ class ContractorOffers extends Component {
               }
 
               <div className="row">
-                {portafolios}
+                {ofertas}
               </div>
             </div>
             :
-            <OfferProfile offer={this.state.ofertaActiva} salir={this.toOfferList} externo={false} />
+            <OfferProfile oferta={this.state.ofertaActiva} salir={this.toOfferList} externo={false} />
         }
 
         <div id="confirmDeleteModal" className="modal s6">
