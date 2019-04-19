@@ -17,7 +17,7 @@ module.exports ={
     
       getById(req, res) {
         return User
-          .findById(req.params.id, {
+          .findByPk(req.params.id, {
             include: [Service,Portfolio,Application],
           })
           .then((user) => {

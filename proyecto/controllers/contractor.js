@@ -17,7 +17,7 @@ module.exports ={
     
       getById(req, res) {
         return Contractor
-          .findById(req.params.id, {
+          .findByPk(req.params.id, {
             include: [CreditCard,Offer,Contract],
           })
           .then((contractor) => {

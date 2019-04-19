@@ -15,8 +15,9 @@ Para iniciar el programa es necesario tener instalado Node.js en el ambiente en 
 ### Pasos
 1.  Entrar al directorio llamado "proyecto" en el archivo descargado de la entrega a través de la consola del ambiente. <br>
 2.  Ejecutar el comando "npm install" para intalar los módulos requeridos para ejecutar el programa. <br>
-3.  Ejecutar el comando "npm start" para iniciar el servidor en la dirección localhost:8082. <br>
-4.  Acceder a los commandos REST por medio de postman. <br>
+3.  Ejecutar el comando "npm run webpack" para compilar el front. <br>
+4.  Ejecutar el comando "npm start" para iniciar el servidor en la dirección localhost:8082. <br>
+5.  Acceder a los commandos REST por medio de postman. <br>
     Posibles rutas (todas comienzan con "/api"): <br>
     posibilidad -> {"/application", "/contract", "/contractor", "/creditcard", "/entry", "/offer", "/portfolio", "/service", "/user"} <br>
     *   POST posibilidad/ <br>
