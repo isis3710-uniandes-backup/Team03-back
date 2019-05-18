@@ -37,7 +37,7 @@ router.delete('/api/entry/:id', entryController.delete);
 //----------------//
 router.get('/api/contractor', contractorController.list);
 router.get('/api/contractor/:id', contractorController.getById);
-router.get('/api/contractor/:log/:pas', contractorController.authenticate)
+router.get('/api/contractor/:log/password/:pas', contractorController.authenticate);
 router.post('/api/contractor', contractorController.add);
 router.put('/api/contractor/:id', contractorController.update);
 router.delete('/api/contractor/:id', contractorController.delete);
@@ -55,6 +55,7 @@ routerCreditCard.delete('/:idCreditCard', creditCardController.delete);
 
 router.get('/api/offer', offerController.listAll);
 router.get('/api/offer/:id',offerController.getByPk);
+
 routerOffer.get('/', offerController.list);
 routerOffer.get('/:idOffer', offerController.getById);
 routerOffer.post('/', offerController.add);

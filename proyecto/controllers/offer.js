@@ -14,6 +14,7 @@ module.exports = {
       .catch((error) => { res.status(400).send(error); });
   },
   list(req, res) {
+    console.log(req.params.id,"Entro con ese id");
     return Offer
       .findAll({
         where: {
