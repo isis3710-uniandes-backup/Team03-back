@@ -11,6 +11,7 @@ const applicationController = require('../controllers').application;
 const contractController = require('../controllers').contract;
 const serviceController = require('../controllers').service;
 
+router.get('/api/token',authMiddleware.tokenAPI);
 /* GET home page. */
 router.get('/api/user',authMiddleware.checkAuth, userController.list);
 router.get('/api/user/:id',authMiddleware.checkAuth, userController.getById);
