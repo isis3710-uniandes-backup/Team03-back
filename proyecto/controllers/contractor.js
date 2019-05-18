@@ -52,7 +52,7 @@ module.exports = {
 
   update(req, res) {
     return Contractor
-      .findById(req.params.id, {
+      .findByPk(req.params.id, {
       })
       .then(contractor => {
         if (!contractor) {
@@ -78,7 +78,7 @@ module.exports = {
 
   delete(req, res) {
     return Contractor
-      .findById(req.params.id)
+      .findByPk(req.params.id)
       .then(contractor => {
         if (!contractor) {
           return res.status(400).send({
