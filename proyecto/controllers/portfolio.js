@@ -85,7 +85,7 @@ module.exports ={
     
       delete(req, res) {
         return Portfolio
-          .findById(req.params.id)
+          .findByPk(req.params.id)
           .then(portfolio => {
             if (!portfolio) {
               return res.status(400).send({
@@ -95,7 +95,7 @@ module.exports ={
             return portfolio
               .destroy()
               .then(() => res.status(200).send(portfolio))
-              .catch((error) => res.status(400).send(error));
+              .catch((error) => { return res.status(400).send(error)});
           })
           .catch((error) => res.status(400).send(error));
       },

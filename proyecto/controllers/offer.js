@@ -14,7 +14,6 @@ module.exports = {
       .catch((error) => { res.status(400).send(error); });
   },
   list(req, res) {
-    console.log(req.params.id,"Entro con ese id");
     return Offer
       .findAll({
         where: {
@@ -75,7 +74,7 @@ module.exports = {
         ContractorId: req.body.ContractorId
       })
       .then((offer) => res.status(201).send(offer))
-      .catch((error) => res.status(400).send(error));
+      .catch((error) =>{ console.log(error); return res.status(400).send(error)});
   },
 
   update(req, res) {
