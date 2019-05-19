@@ -20,16 +20,16 @@ router.post('/api/user', userController.add);
 router.put('/api/user/:id',authMiddleware.checkAuth, userController.update);
 router.delete('/api/user/:id',authMiddleware.checkAuth, userController.delete);
 
-router.get('/api/portfolio',authMiddleware.checkAuth, portfolioController.list);
-router.get('/api/portfolio/:id',authMiddleware.checkAuth, portfolioController.getById);
-router.get('/portfolio/:portfolio_url',authMiddleware.checkAuth, portfolioController.getByUrl);
+router.get('/api/portfolio', portfolioController.list);
+router.get('/api/portfolio/:id', portfolioController.getById);
+router.get('/portfolio/:portfolio_url', portfolioController.getByUrl);
 router.get('/api/portfolio/:id/user',authMiddleware.checkAuth, portfolioController.getUserPortfolio);
 router.post('/api/portfolio',authMiddleware.checkAuth, portfolioController.add);
 router.put('/api/portfolio/:id',authMiddleware.checkAuth, portfolioController.update);
 router.delete('/api/portfolio/:id',authMiddleware.checkAuth, portfolioController.delete);
 
 router.get('/api/entry',authMiddleware.checkAuth, entryController.list);
-router.get('/api/entry/:id',authMiddleware.checkAuth, entryController.getById);
+router.get('/api/entry/:id', entryController.getById);
 router.post('/api/entry',authMiddleware.checkAuth, entryController.add);
 router.put('/api/entry/:id',authMiddleware.checkAuth, entryController.update);
 router.delete('/api/entry/:id',authMiddleware.checkAuth, entryController.delete);
