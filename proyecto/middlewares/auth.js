@@ -29,7 +29,7 @@ const tokenAPI = (req, res, next) => {
         expiresIn: config.tokenExpireTime
     });
 
-    return res.status(200).send(token);
+    return res.status(200).send({token: token});
 }
 
 module.exports = {

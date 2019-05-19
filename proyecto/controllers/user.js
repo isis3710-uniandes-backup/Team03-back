@@ -5,6 +5,7 @@ const Application = require("../models").Application;
 const bcrypt = require('bcrypt');
 const config = require('../config');
 const jwt = require('jsonwebtoken');
+const Sequelize = require('sequelize');
 
 module.exports = {
   list(req, res) {
@@ -93,9 +94,11 @@ module.exports = {
   authenticate(req, res) {
     return User
       .findOne({
-        where: {
-          user_login: req.body.user_login,
-        }
+        where: Sequelize.or({
+          user_login: req.body.login,
+        },{
+          user_email: req.body.login,
+        })
       })
       .then(user => {
         if (!user) {
@@ -103,7 +106,7 @@ module.exports = {
             message: 'User not found.',
           })
         }
-        else if (!bcrypt.compareSync(req.body.user_password || '', user.user_password)) {
+        else if (!bcrypt.compareSync(req.body.password || '', user.user_password)) {
           return res.status(400).send({
             message: 'Wrong password.',
           });

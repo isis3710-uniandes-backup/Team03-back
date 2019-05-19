@@ -6,6 +6,7 @@ const Application = require("../models").Application;
 const bcrypt = require('bcrypt');
 const config = require('../config');
 const jwt = require('jsonwebtoken');
+const Sequelize = require('sequelize');
 
 module.exports = {
   list(req, res) {
@@ -96,9 +97,12 @@ module.exports = {
   authenticate(req, res) {
     return Contractor
       .findOne({
-        where: {
-          contractor_login: req.body.contractor_login,
-        }
+        where: Sequelize.or({
+          contractor_login: req.body.login,
+        },
+        {
+          contractor_email: req.body.login,
+        })
       })
       .then(contractor => {
         if (!contractor) {
@@ -106,7 +110,7 @@ module.exports = {
             message: 'Contractor not found.',
           })
         }
-        else if (!bcrypt.compareSync(req.body.contractor_password || '', contractor.contractor_password)) {
+        else if (!bcrypt.compareSync(req.body.password || '', contractor.contractor_password)) {
           return res.status(400).send({
             message: 'Wrong password.',
           });
