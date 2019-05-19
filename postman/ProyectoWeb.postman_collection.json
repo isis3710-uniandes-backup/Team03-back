@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "a356b71f-9b6a-41a8-bde8-d51b19207079",
-		"name": "ProyectoWeb",
+		"_postman_id": "3d9bb6ee-f699-41f4-ab43-997aafc08510",
+		"name": "ProyectoWeb copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -72,10 +72,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/user",
 							"protocol": "http",
@@ -110,10 +106,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/user/1",
 							"protocol": "http",
@@ -154,14 +146,19 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Ind1a29uZzIiLCJpZCI6MTMsInRpbWUiOiIyMDE5LTA1LTE4VDIyOjI1OjM3LjQ5MloiLCJpYXQiOjE1NTgyMTgzMzcsImV4cCI6MTU1ODIzOTkzN30.bWZSejq3_rwKnJQCBIw6TpBHWZTrNjfBHJcmJM880io",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_names\": \"Cristian Mateo\",\n    \"user_lastnames\": \"Amaya Porras\",\n    \"user_email\": \"mateoap95@gmail.com\",\n    \"user_login\": \"wukong\",\n    \"user_password\": \"password2\",\n    \"user_birthdate\": \"1995-12-06\"\n}"
+							"raw": "{\n    \"user_password\": \"password\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/user/1",
+							"raw": "http://localhost:8082/api/user/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -170,7 +167,7 @@
 							"path": [
 								"api",
 								"user",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -217,6 +214,70 @@
 								"api",
 								"user",
 								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_login\": \"wukong2\",\n    \"user_password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN2 User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"mateoap95@gmail.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"user",
+								"login"
 							]
 						}
 					},
@@ -291,10 +352,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/portfolio",
 							"protocol": "http",
@@ -329,10 +386,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/portfolio/4",
 							"protocol": "http",
@@ -510,10 +563,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/entry",
 							"protocol": "http",
@@ -548,10 +597,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/entry/3",
 							"protocol": "http",
@@ -729,10 +774,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/application/",
 							"protocol": "http",
@@ -768,10 +809,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/application/5",
 							"protocol": "http",
@@ -941,10 +978,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/contract/",
 							"protocol": "http",
@@ -980,10 +1013,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/contract/5",
 							"protocol": "http",
@@ -1174,11 +1203,13 @@
 					],
 					"request": {
 						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Ind1a29uZzIiLCJpZCI6MTMsInRpbWUiOiIyMDE5LTA1LTE4VDIyOjI1OjM3LjQ5MloiLCJpYXQiOjE1NTgyMTgzMzcsImV4cCI6MTU1ODIzOTkzN30.bWZSejq3_rwKnJQCBIw6TpBHWZTrNjfBHJcmJM880io",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8082/api/contractor/",
 							"protocol": "http",
@@ -1214,10 +1245,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/contractor/5",
 							"protocol": "http",
@@ -1257,14 +1284,19 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Ind1a29uZzIiLCJpZCI6MTMsInRpbWUiOiIyMDE5LTA1LTE4VDIyOjI1OjM3LjQ5MloiLCJpYXQiOjE1NTgyMTgzMzcsImV4cCI6MTU1ODIzOTkzN30.bWZSejq3_rwKnJQCBIw6TpBHWZTrNjfBHJcmJM880io",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"contractor_name\": \"Enrique Manrique\",\n    \"contractor_email\": \"e.manrique@someotherplace.com\",\n    \"contractor_login\": \"MEnrique\", \n    \"contractor_password\": \"cosas\",\n    \"contractor_contracts\": [],\n    \"contractor_offers\": [],\n    \"contractor_credicards\": []\n}"
+							"raw": "{\n    \"contractor_password\": \"hakunaMatata\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8082/api/contractor/5",
+							"raw": "http://localhost:8082/api/contractor/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1273,7 +1305,7 @@
 							"path": [
 								"api",
 								"contractor",
-								"5"
+								"8"
 							]
 						}
 					},
@@ -1313,6 +1345,38 @@
 								"api",
 								"contractor",
 								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN Contractor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\": \"ing.fer\",\n    \"password\": \"hakunaMatata\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/contractor/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"contractor",
+								"login"
 							]
 						}
 					},
@@ -1409,10 +1473,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/creditcard/",
 							"protocol": "http",
@@ -1448,10 +1508,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/creditcard/3",
 							"protocol": "http",
@@ -1643,10 +1699,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/offer/",
 							"protocol": "http",
@@ -1682,10 +1734,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/offer/3",
 							"protocol": "http",
@@ -1877,10 +1925,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/service/",
 							"protocol": "http",
@@ -1916,10 +1960,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "http://localhost:8082/api/service/7",
 							"protocol": "http",
@@ -2043,6 +2083,26 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Generar Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/api/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"api",
+						"token"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
